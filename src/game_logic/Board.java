@@ -48,7 +48,7 @@ public class Board {
      * @param y new y-coordinate / row
      * @return true if the move was valid, otherwise false
      */
-    public boolean move(int x0, int y0, int x, int y) {
+    boolean move(int x0, int y0, int x, int y) {
         return boardMatrix[x0][y0].move(x,y);
     }
 
