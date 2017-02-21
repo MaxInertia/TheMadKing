@@ -3,8 +3,6 @@ package views.game_view;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.layout.AnchorPane;
-import views.game_view.graphics.MouseEvents;
 
 import java.net.URL;
 import java.util.ResourceBundle;

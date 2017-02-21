@@ -1,4 +1,4 @@
-package views.game_view.graphics;
+package views.game_view;
 
 /**
  *

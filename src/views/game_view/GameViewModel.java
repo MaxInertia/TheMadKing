@@ -1,51 +1,57 @@
 package views.game_view;
 
+import game.history.History;
+import game.logic.Game;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
-
-import static views.game_view.graphics.Constants.BOARD_PADDING;
-import static views.game_view.graphics.Constants.CELL_WIDTH;
-import static views.game_view.graphics.Constants.COLUMN_ROW_COUNT;
 
 /**
  *
  */
-public class GameViewModel {
+public class GameViewModel extends Graphics {
 
+    static GameViewModel instance;
+    History history;
     Canvas canvas;
-    GraphicsContext gc;
+    Game game;
 
     GameViewModel(Canvas canvas) {
         this.canvas = canvas;
         gc = canvas.getGraphicsContext2D();
-        drawBoard();
+        game = new Game();
+        history = new History();
+        instance = this;
+
+        drawBackground();
+        drawCells();
+        drawPieces(instance.game);
     }
 
-    void drawBoard() {
-        gc.setFill(Color.ANTIQUEWHITE);
-        gc.fillRect(
-                BOARD_PADDING,
-                BOARD_PADDING,
-                COLUMN_ROW_COUNT*CELL_WIDTH,
-                COLUMN_ROW_COUNT*CELL_WIDTH
-        );
+    public static void redraw() {
+        instance.drawBackground();
+        instance.drawCells();
+        instance.drawPieces(instance.game);
+    }
 
-        for(int multiplier=0; multiplier<=COLUMN_ROW_COUNT; multiplier++) {
-            gc.strokeLine(
-                    BOARD_PADDING+CELL_WIDTH*multiplier,
-                    BOARD_PADDING,
-                    BOARD_PADDING+CELL_WIDTH*multiplier,
-                    COLUMN_ROW_COUNT*CELL_WIDTH+BOARD_PADDING
-            );
-            gc.strokeLine(
-                    BOARD_PADDING,
-                    BOARD_PADDING+CELL_WIDTH*multiplier,
-                    COLUMN_ROW_COUNT*CELL_WIDTH+BOARD_PADDING,
-                    BOARD_PADDING+CELL_WIDTH*multiplier
-            );
+    public static void redraw(int row, int column) {
+        instance.drawBackground();
+        instance.highlightCell(row, column);
+        instance.drawCells();
+        instance.drawPieces(instance.game);
+    }
+
+    public static void move(int row, int column, int newRow, int newColumn) {
+        boolean validMode = instance.game.turnMove(row, column, newRow, newColumn);
+        if(validMode) {
+            instance.history.addMove(row, column, newRow, newColumn);
+            redraw();
         }
-
+        if(instance.game.gameOver()) {
+            if(instance.game.getActiveTeam().equals(Game.Team.BEAST)) {
+                instance.drawGameOver("The Mad King Wins!");
+            } else {
+                instance.drawGameOver("The Dragons Win!");
+            }
+        }
     }
 
 }
