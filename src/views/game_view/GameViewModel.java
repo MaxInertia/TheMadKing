@@ -19,6 +19,7 @@ public class GameViewModel extends Graphics {
         gc = canvas.getGraphicsContext2D();
         game = new Game();
         history = new History();
+        loadImages();
         instance = this;
 
         drawBackground();

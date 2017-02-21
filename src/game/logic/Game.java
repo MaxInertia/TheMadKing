@@ -126,7 +126,7 @@ public class Game {
                         if (piece != null) {
                             if (piece.getType().equals(Piece.Type.DRAGON)) {
                                 blockedDirections++;
-                            } else if (piece.getType().equals(Piece.Type.GUARD) && (c - 2) < COLUMN_ROW_COUNT && board.cells[r][c-2] != null) {
+                            } else if (piece.getType().equals(Piece.Type.GUARD) && (c - 2) >= COLUMN_ROW_COUNT && board.cells[r][c-2] != null) {
                                 blockedDirections++;
                             }
                         }
@@ -137,7 +137,7 @@ public class Game {
                         if (piece != null) {
                             if (piece.getType().equals(Piece.Type.DRAGON)) {
                                 blockedDirections++;
-                            } else if (piece.getType().equals(Piece.Type.GUARD) && (r - 2) < COLUMN_ROW_COUNT && board.cells[r-2][c] != null) {
+                            } else if (piece.getType().equals(Piece.Type.GUARD) && (r - 2) >= COLUMN_ROW_COUNT && board.cells[r-2][c] != null) {
                                 blockedDirections++;
                             }
                         }
