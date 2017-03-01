@@ -22,7 +22,6 @@ public class Game {
     public Game() {
         currentTurn = Team.MAN;
         board = new Board();
-        Movement.setBoard(board.getCells());
         endGameState = false;
     }
 
@@ -53,11 +52,11 @@ public class Game {
         Piece.Type pieceType = board.cells[row][column].getType();
         if(currentTurn==Team.MAN) {
             if(pieceType==Piece.Type.GUARD || pieceType==Piece.Type.KING) {
-                retVal = Movement.checkIfValid(row, column, newRow, newColumn);
+                retVal = Movement.checkIfValid(board.getCells(), row, column, newRow, newColumn);
             }
         } else {
             if(pieceType== Piece.Type.DRAGON) {
-                retVal = Movement.checkIfValid(row, column, newRow, newColumn);
+                retVal = Movement.checkIfValid(board.getCells(), row, column, newRow, newColumn);
             }
         }
 
