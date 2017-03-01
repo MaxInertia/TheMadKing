@@ -99,8 +99,6 @@ public class MiniMax {
         int col = edge.getMove().getInitialCell().getColumn();
         int rowFinal = edge.getMove().getFinalCell().getRow();
         int colFinal = edge.getMove().getFinalCell().getColumn();
-
-        Movement.setBoard(board);
     }
 
     /**
@@ -112,7 +110,33 @@ public class MiniMax {
      * @param edge The edge containing the move to undo.
      */
     private void undoMove(@NotNull Edge edge) {
-
+    	// Get the first 4 values in the delta.
+        int row = edge.getMove().getInitialCell().getRow();
+        int col = edge.getMove().getInitialCell().getColumn();
+        int rowFinal = edge.getMove().getFinalCell().getRow();
+        int colFinal = edge.getMove().getFinalCell().getColumn();
+        
+        // First check to see if any pieces changed types (1 or more).
+        // A dragon could have been removed, etc.
+        
+        Piece finalpiece = board[colFinal][rowFinal];
+        Piece intpiece = board[colFinal][rowFinal];
+        
+        switch (finalpiece.getType()) {
+	        case KING:
+	        	
+	        	break;
+	        case GUARD:
+	        	
+	        	break;
+	        	
+	        case DRAGON:
+	        
+	        break;
+        }
+        
+        // Move the pieces back to where they were.
+        
     }
 
     /**
