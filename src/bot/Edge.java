@@ -36,6 +36,11 @@ public class Edge {
     	this.delta = new ArrayList<Integer> ();
     }
 
+    /**
+     * Constructor class for each edge in the minimax tree.
+     * @param row Integer 1
+     * @param column Integer 2
+     */
     public Edge(Integer row, Integer column) {
     	this.delta = new ArrayList<Integer> ();
     	this.delta.add(row);
@@ -43,35 +48,14 @@ public class Edge {
     }
     /**
      * Constructor class for each edge in the minimax tree.
-     * @param moves A numerical list of changes made (x0, y0, x, y)
-     * @param children A list of type node for children associated with this node.
+     * @param row Integer 1
+     * @param column Integer 2
+     * @param nodeType An enumerated list for declaring what player is associated with this node (min or max).
      */
-    public Edge (Integer row, Integer column, ArrayList<Edge> children) {
+    public Edge (Integer row, Integer column, type nodeType) {
     	this.delta = new ArrayList<Integer> ();
     	this.delta.add(row);
     	this.delta.add(column);
-    	this.children = children;
-    }
-    /**
-     * Constructor class for each node in the minimax tree.
-     * @param moves A numerical list of changes made (x0, y0, x, y)
-     * @param children A list of type node for children associated with this node.
-     * @param nodeType An enumerated list for declaring what player is associated with this node (min or max).
-     */
-    public Edge (Integer row, Integer column, ArrayList<Edge> children, type nodeType) {
-    	this.delta = new ArrayList<Integer> ();
-    	this.delta.add(row);
-    	this.delta.add(column);
-    	this.children = children;
-    	this.NodeType = nodeType;
-    }
-    /**
-     * Constructor class for each edge in the minimax tree.
-     * @param moves A numerical list of changes made (x0, y0, x, y)
-     * @param nodeType An enumerated list for declaring what player is associated with this node (min or max).
-     */
-    public Edge (ArrayList<Integer> moves, type nodeType) {
-    	this.delta = moves;
     	this.NodeType = nodeType;
     }
     
