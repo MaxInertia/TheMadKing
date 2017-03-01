@@ -7,10 +7,10 @@ import game.pieces.Piece;
  */
 public class Movement {
 
-    private static Piece[][] board;
+    private Piece[][] board;
 
-    public static void setBoard(Piece[][] board) {
-        Movement.board = board;
+    private Movement(Piece[][] board) {
+        this.board = board;
     }
 
     /**
@@ -24,7 +24,9 @@ public class Movement {
      * @param newColumn column being moved to
      * @return Tue if the move is valid, otherwise false
      */
-    public static boolean checkIfValid(int row, int  column, int newRow, int newColumn) {
+    public static boolean checkIfValid(Piece[][] board, int row, int  column, int newRow, int newColumn) {
+        Movement m = new Movement(board);
+
         boolean[] movement = new boolean[4];
         for(int i=0; i<4; i++) movement[i] = false;
 
@@ -41,19 +43,19 @@ public class Movement {
 
         boolean valid;
         if(movement[0]) {
-            valid = adjacent_motion(row, column, newRow, newColumn);
+            valid = m.adjacent_motion(row, column, newRow, newColumn);
             if(valid) return true;
         }
         if(movement[1]) {
-            valid = all_directions_motion(row, column, newRow, newColumn);
+            valid = m.all_directions_motion(row, column, newRow, newColumn);
             if(valid) return true;
         }
         if(movement[2]) {
-            valid = capture_dragon_motion(row, column, newRow, newColumn);
+            valid = m.capture_dragon_motion(row, column, newRow, newColumn);
             if(valid) return true;
         }
         if(movement[3]) {
-            valid = jump_guard_motion(row, column, newRow, newColumn);
+            valid = m.jump_guard_motion(row, column, newRow, newColumn);
             if(valid) return true;
         }
         return false;
@@ -67,7 +69,7 @@ public class Movement {
      * @param newColumn
      * @return
      */
-    private static boolean adjacent_motion(int row, int  column, int newRow, int newColumn) {
+    public boolean adjacent_motion(int row, int  column, int newRow, int newColumn) {
         if( (Math.abs(row-newRow) + Math.abs(column-newColumn)) == 1 && board[newRow][newColumn] == null) {
             return true;
         }
@@ -82,7 +84,7 @@ public class Movement {
      * @param newColumn
      * @return
      */
-    private static boolean all_directions_motion(int row, int  column, int newRow, int newColumn) {
+    public boolean all_directions_motion(int row, int  column, int newRow, int newColumn) {
         if( board[newRow][newColumn] == null && (Math.abs(column-newColumn) <= 1) && (Math.abs(row-newRow) <= 1) ) {
             return true;
         }
@@ -97,7 +99,7 @@ public class Movement {
      * @param newColumn
      * @return
      */
-    private static boolean capture_dragon_motion(int row, int  column, int newRow, int newColumn) {
+    public boolean capture_dragon_motion(int row, int  column, int newRow, int newColumn) {
         // Check if Dragon can be moved into
         if(board[newRow][newColumn] != null){
             if(board[newRow][newColumn].getType()== Piece.Type.DRAGON) {
@@ -145,7 +147,7 @@ public class Movement {
      * @param newColumn
      * @return
      */
-    private static boolean jump_guard_motion(int row, int  column, int newRow, int newColumn) {
+    public boolean jump_guard_motion(int row, int  column, int newRow, int newColumn) {
         if(board[newRow][newColumn]!=null) return false;
 
         if( (row == newRow) && (Math.abs(column-newColumn) == 2) ) {
