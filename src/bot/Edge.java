@@ -129,6 +129,14 @@ public class Edge {
     }
     
     /**
+     * Get's the last 4 values in the delta list and returns it as a move.
+     * @return
+     */
+    public Move getLast () {
+    	return new Move(delta.get(delta.size()-4), delta.get(delta.size()-3), delta.get(delta.size()-2), delta.get(delta.size()-1));
+    }
+    
+    /**
      * Append a child to the list of children.
      * @param child
      */
