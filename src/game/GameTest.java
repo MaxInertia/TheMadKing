@@ -2,10 +2,13 @@ package game;
 
 import game.logic.Game;
 import game.pieces.Piece;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 /**
  *
@@ -14,13 +17,13 @@ class GameTest {
 
     Game game;
 
-    @BeforeEach
+    @Before
     void before() {
         game = new Game();
         game.printBoard();
     }
 
-    @AfterEach
+    @After
     void afterEach() {
         game.printBoard();
     }

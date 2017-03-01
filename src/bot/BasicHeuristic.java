@@ -11,7 +11,7 @@ import game.pieces.Piece;
  */
 public class BasicHeuristic implements Heuristic {
     @Override
-    public double valueOf(Piece.Type[][] board) {
+    public double valueOf(Piece[][] board) {
         return 0;
     }
 }
