@@ -3,6 +3,7 @@ package bot;
 import java.util.ArrayList;
 
 import game.history.Move;
+import javafx.util.Pair;
 
 /**
  * A class representing the nodes in the minimax tree.
@@ -78,13 +79,18 @@ public class Edge {
     }
     
     /**
-     * Append a move to the delta list.
-     * @param x First value (Column)
-     * @param y Second value (row)
+     * Append a position to the change list.
+     * @param row First value (Row)
+     * @param col Second value (Column)
      */
-    public void appenddelta (int x, int y) {
-    	delta.add(x);
-    	delta.add(y);
+    public void addChange (int row, int col) {
+    	delta.add(row);
+    	delta.add(col);
+    }
+
+    public Pair<Integer, Integer> getChange(int num) {
+        if(delta.size()< (4 + (num+1))) return null;
+        return new Pair<>(delta.get(4+num),delta.get(5+num));
     }
     
     /**
@@ -109,10 +115,10 @@ public class Edge {
      * @param x Ending x position (ending column)
      * @param y Ending y position (ending row)
      */
-    public void appendmove (int y0, int x0, int y, int x) {
+    /*public void appendmove (int y0, int x0, int y, int x) {
     	appenddelta (y0, x0);
     	appenddelta (y, x);
-    }
+    }*/
     
     /**
      * Remove two pairs of integers in the delta list representing a move.

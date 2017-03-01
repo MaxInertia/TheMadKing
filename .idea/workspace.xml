@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Update Game class to use new version of Movement class.">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TheMadKing.iml" afterPath="$PROJECT_DIR$/TheMadKing.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/bot/BotController.java" afterPath="$PROJECT_DIR$/src/bot/BotController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/bot/Edge.java" afterPath="$PROJECT_DIR$/src/bot/Edge.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/bot/MiniMax.java" afterPath="$PROJECT_DIR$/src/bot/MiniMax.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/bot/Util/BoardCheckSum.java" afterPath="$PROJECT_DIR$/src/bot/Util/BoardCheckSum.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/pieces/Dragon.java" afterPath="$PROJECT_DIR$/src/game/pieces/Dragon.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/pieces/Guard.java" afterPath="$PROJECT_DIR$/src/game/pieces/Guard.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/pieces/King.java" afterPath="$PROJECT_DIR$/src/game/pieces/King.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/bot/BasicHeuristic.java" afterPath="$PROJECT_DIR$/src/bot/heuristic/BasicHeuristic.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/bot/Heuristic.java" afterPath="$PROJECT_DIR$/src/bot/heuristic/Heuristic.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -104,11 +96,11 @@
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="Movement.java" pinned="false" current-in-tab="false">
+            <file leaf-file-name="Movement.java" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/src/game/logic/Movement.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="850">
-                    <caret line="50" column="34" lean-forward="false" selection-start-line="50" selection-start-column="34" selection-end-line="50" selection-end-column="34" />
+                  <state relative-caret-position="510">
+                    <caret line="130" column="21" lean-forward="true" selection-start-line="130" selection-start-column="21" selection-end-line="130" selection-end-column="21" />
                     <folding>
                       <element signature="e#152#153#0" expanded="true" />
                       <element signature="e#186#187#0" expanded="true" />
@@ -127,7 +119,7 @@
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="BasicHeuristic.java" pinned="false" current-in-tab="true">
+            <file leaf-file-name="BasicHeuristic.java" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/src/bot/heuristic/BasicHeuristic.java">
                 <provider selected="true" editor-type-id="text-editor">
                   <state relative-caret-position="255">
@@ -153,8 +145,8 @@
       <file leaf-file-name="MiniMax.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/bot/MiniMax.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="140" column="8" lean-forward="true" selection-start-line="140" selection-start-column="8" selection-end-line="140" selection-end-column="8" />
+            <state relative-caret-position="288">
+              <caret line="182" column="8" lean-forward="true" selection-start-line="182" selection-start-column="8" selection-end-line="182" selection-end-column="8" />
               <folding>
                 <element signature="docComment;class#MiniMax#0" expanded="false" />
                 <element signature="method#MiniMax#0;class#MiniMax#0" expanded="false" />
@@ -164,7 +156,6 @@
                 <element signature="method#search#0;class#MiniMax#0" expanded="false" />
                 <element signature="docComment;method#applyMove#0;class#MiniMax#0" expanded="false" />
                 <element signature="docComment;method#undoMove#0;class#MiniMax#0" expanded="false" />
-                <element signature="e#4387#4449#0" expanded="false" />
                 <element signature="docComment;method#generateEdges#0;class#MiniMax#0" expanded="false" />
                 <element signature="method#generateEdges#0;class#MiniMax#0" expanded="false" />
                 <element signature="docComment;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
@@ -193,6 +184,16 @@
                 <element signature="method#compare#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
                 <element signature="method#assertSame#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Edge.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/bot/Edge.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="444">
+              <caret line="91" column="52" lean-forward="false" selection-start-line="91" selection-start-column="52" selection-end-line="91" selection-end-column="52" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -233,6 +234,7 @@
       <find>5</find>
       <find>getCells()</find>
       <find>board.[</find>
+      <find>newColumn</find>
     </findStrings>
     <replaceStrings>
       <replace>BOARD_PADDING</replace>
@@ -246,6 +248,7 @@
       <replace>4</replace>
       <replace>Edge</replace>
       <replace>board[</replace>
+      <replace>cTemp</replace>
     </replaceStrings>
   </component>
   <component name="FindManager">
@@ -301,7 +304,6 @@
         <option value="$PROJECT_DIR$/src/game/pieces/Piece.java" />
         <option value="$PROJECT_DIR$/src/game/logic/Movement.java" />
         <option value="$PROJECT_DIR$/src/game/logic/Game.java" />
-        <option value="$PROJECT_DIR$/src/bot/Edge.java" />
         <option value="$PROJECT_DIR$/src/bot/Util/CheckSum.java" />
         <option value="$PROJECT_DIR$/src/game/pieces/King.java" />
         <option value="$PROJECT_DIR$/src/game/pieces/Guard.java" />
@@ -312,6 +314,7 @@
         <option value="$PROJECT_DIR$/src/bot/heuristic/BasicHeuristic.java" />
         <option value="$PROJECT_DIR$/src/bot/Util/BoardCheckSum.java" />
         <option value="$PROJECT_DIR$/src/bot/BotController.java" />
+        <option value="$PROJECT_DIR$/src/bot/Edge.java" />
         <option value="$PROJECT_DIR$/src/bot/MiniMax.java" />
       </list>
     </option>
@@ -1054,7 +1057,14 @@
       <option name="project" value="LOCAL" />
       <updated>1488351618832</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Various Changes">
+      <created>1488404702769</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1488404702769</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1090,7 +1100,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82550000" />
+    <option name="totallyTimeSpent" value="83418000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1102,7 +1112,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20824525" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39429176" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15010571" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29635417" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1155,11 +1165,12 @@
     <MESSAGE value="Modify design of Movement class." />
     <MESSAGE value="Update Game class to use new version of Movement class." />
     <MESSAGE value="Add interface for BoardCheckSum" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add interface for BoardCheckSum" />
+    <MESSAGE value="Various Changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Various Changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="10" />
+      <option name="time" value="11" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1427,17 +1438,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/logic/Movement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="850">
-          <caret line="50" column="34" lean-forward="false" selection-start-line="50" selection-start-column="34" selection-end-line="50" selection-end-column="34" />
-          <folding>
-            <element signature="e#152#153#0" expanded="true" />
-            <element signature="e#186#187#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/game/logic/Game.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -1453,14 +1453,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="25" column="20" lean-forward="true" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bot/Edge.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1029">
-          <caret line="47" column="33" lean-forward="false" selection-start-line="47" selection-start-column="33" selection-end-line="47" selection-end-column="33" />
           <folding />
         </state>
       </provider>
@@ -1543,10 +1535,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/logic/Movement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="130" column="21" lean-forward="true" selection-start-line="130" selection-start-column="21" selection-end-line="130" selection-end-column="21" />
+          <folding>
+            <element signature="e#152#153#0" expanded="true" />
+            <element signature="e#186#187#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bot/Edge.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="91" column="52" lean-forward="false" selection-start-line="91" selection-start-column="52" selection-end-line="91" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/bot/MiniMax.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="140" column="8" lean-forward="true" selection-start-line="140" selection-start-column="8" selection-end-line="140" selection-end-column="8" />
+        <state relative-caret-position="288">
+          <caret line="182" column="8" lean-forward="true" selection-start-line="182" selection-start-column="8" selection-end-line="182" selection-end-column="8" />
           <folding>
             <element signature="docComment;class#MiniMax#0" expanded="false" />
             <element signature="method#MiniMax#0;class#MiniMax#0" expanded="false" />
@@ -1556,7 +1567,6 @@
             <element signature="method#search#0;class#MiniMax#0" expanded="false" />
             <element signature="docComment;method#applyMove#0;class#MiniMax#0" expanded="false" />
             <element signature="docComment;method#undoMove#0;class#MiniMax#0" expanded="false" />
-            <element signature="e#4387#4449#0" expanded="false" />
             <element signature="docComment;method#generateEdges#0;class#MiniMax#0" expanded="false" />
             <element signature="method#generateEdges#0;class#MiniMax#0" expanded="false" />
             <element signature="docComment;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />

@@ -113,8 +113,56 @@ public class MiniMax {
         int rowFinal = edge.getMove().getFinalCell().getRow();
         int colFinal = edge.getMove().getFinalCell().getColumn();
 
+        if(board[rowFinal][colFinal]!=null) {
+            edge.addChange(rowFinal,colFinal);
+        }
 
+        // Perform move
+        board[rowFinal][colFinal] = board[row][col];
 
+        // Check for Conversions
+        for(int r=0; r<Constants.COLUMN_ROW_COUNT; r++) {
+            for(int c=0; c<Constants.COLUMN_ROW_COUNT; c++) {
+                if(board[r][c]!=null && board[r][c].getType().equals(Piece.Type.GUARD)) {
+                    int numberSurrounding = 0;
+                    int rTemp = r;
+                    int cTemp = c;
+
+                    // Check how many dragons surround that guard
+                    if(r-1 >= 0) {
+                        Piece piece =board[rTemp-1][cTemp];
+                        if(piece!=null && (piece.getType()== Piece.Type.KING || piece.getType()== Piece.Type.GUARD) ) {
+                            numberSurrounding++;
+                        }
+                    }
+                    if(rTemp+1 <= 4) {
+                        Piece piece =board[rTemp+1][cTemp];
+                        if(piece!=null && (piece.getType()== Piece.Type.KING || piece.getType()== Piece.Type.GUARD) ) {
+                            numberSurrounding++;
+                        }
+                    }
+                    if(cTemp-1 >= 0) {
+                        Piece piece =board[rTemp][cTemp-1];
+                        if(piece!=null && (piece.getType()== Piece.Type.KING || piece.getType()== Piece.Type.GUARD) ) {
+                            numberSurrounding++;
+                        }
+                    }
+                    if(cTemp+1 <= 4) {
+                        Piece piece =board[rTemp][cTemp+1];
+                        if(piece!=null && (piece.getType() == Piece.Type.KING || piece.getType()== Piece.Type.GUARD) ) {
+                            numberSurrounding++;
+                        }
+                    }
+
+                    // If surrounding dragons >= 3, convert dragon to guard
+                    if(numberSurrounding>=3) {
+                        board[r][c] = new Dragon(r,c);
+                        edge.addChange(r,c);
+                    }
+                }
+            }
+        }
+        
         // Use Movement.checkIfValid(...) to determine if a given move is valid.
     }
 
