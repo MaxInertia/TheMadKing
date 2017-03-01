@@ -124,7 +124,12 @@ public class MiniMax {
         
         switch (finalpiece.getType()) {
 	        case KING:
-	        	
+	        	// Was this the same as it was initially?
+	        	if (intpiece.getType() == finalpiece.getType()) {
+	        		
+	        	} else {
+	        		// The piece changed.
+	        	}
 	        	break;
 	        case GUARD:
 	        	

@@ -14,6 +14,13 @@ public interface CheckSum {
      * @return The game boards check sum.
      */
     public String getCheckSum(Piece[][] board);
+    
+    /**
+     * Calculates the extended checksum for the provided board (/w dragons and guard values).
+     * @param board The game board.
+     * @return The game boards check sum.
+     */
+    public String getExtCheckSum(Piece[][] board);
 
     /**
      * Determine the move that was applied to board 1 (specified by the checkSum) that resulted in board 2 (specified by
