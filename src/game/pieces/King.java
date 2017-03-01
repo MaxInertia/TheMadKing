@@ -9,4 +9,7 @@ public class King extends Piece {
         type = Type.KING;
     }
 
+    public King(){
+        type = Type.KING;
+    }
 }

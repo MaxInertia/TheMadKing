@@ -1,5 +1,6 @@
 package bot;
 
+import bot.heuristic.BasicHeuristic;
 import game.history.Move;
 import game.pieces.Piece;
 
@@ -10,7 +11,7 @@ public class BotController {
 
     MiniMax miniMax;
 
-    public void notifyOfTurn(Piece.Type[][] board) {
+    public void notifyOfTurn(Piece[][] board) {
         if(miniMax == null) {
             miniMax = new MiniMax(3, new BasicHeuristic());
         }

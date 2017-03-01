@@ -1,5 +1,6 @@
-package bot;
+package bot.heuristic;
 
+import bot.heuristic.Heuristic;
 import game.pieces.Piece;
 
 /**
@@ -11,7 +12,8 @@ import game.pieces.Piece;
  */
 public class BasicHeuristic implements Heuristic {
     @Override
-    public double valueOf(Piece[][] board) {
+    public float valueOf(Piece[][] board) {
+        if(board==null) return 0;
         return 0;
     }
 }

@@ -199,4 +199,11 @@ public class BoardCheckSum implements CheckSum {
         
 		return rowValue+column+columnValue+row;
 	}
+
+	/** ----------------------------------------------------------------------------
+	 * JUnit tests encased in inner-class Unit_Tests.
+	 */
+	public static class Unit_Tests {
+		//TODO: Write tests here
+	}
 }

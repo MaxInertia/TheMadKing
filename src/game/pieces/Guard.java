@@ -9,4 +9,7 @@ public class Guard extends Piece {
         type = Type.GUARD;
     }
 
+    public Guard() {
+        type = Type.GUARD;
+    }
 }

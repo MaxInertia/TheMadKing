@@ -9,4 +9,7 @@ public class Dragon extends Piece {
         type = Type.DRAGON;
     }
 
+    public Dragon() {
+        type = Type.DRAGON;
+    }
 }

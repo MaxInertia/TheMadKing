@@ -1,4 +1,4 @@
-package bot;
+package bot.heuristic;
 
 import game.pieces.Piece;
 
@@ -16,6 +16,6 @@ public interface Heuristic {
      * @param board The game board.
      * @return The value of the game board as evaluated by this heuristic.
      */
-    public double valueOf(Piece[][] board);
+    public float valueOf(Piece[][] board);
 
 }

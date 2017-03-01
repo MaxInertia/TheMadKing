@@ -41,10 +41,12 @@ public class Edge {
      * @param row Integer 1
      * @param column Integer 2
      */
-    public Edge(Integer row, Integer column) {
-    	this.delta = new ArrayList<Integer> ();
+    public Edge(Integer row, Integer column, int rowFinal, int columnFinal ) {
+    	this.delta = new ArrayList<> ();
     	this.delta.add(row);
     	this.delta.add(column);
+        this.delta.add(rowFinal);
+        this.delta.add(columnFinal);
     }
     /**
      * Constructor class for each edge in the minimax tree.
