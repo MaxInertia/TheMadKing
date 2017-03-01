@@ -2,7 +2,9 @@ package bot;
 
 import com.sun.istack.internal.NotNull;
 import game.history.Move;
+import game.logic.Movement;
 import game.pieces.Piece;
+import org.junit.Test;
 
 import java.util.ArrayList;
 
@@ -14,7 +16,7 @@ import static java.lang.Math.min;
  */
 public class MiniMax {
 
-    private Piece.Type board[][];
+    private Piece board[][];
     private Heuristic heuristic;
     private int depthLimit;
 
@@ -93,7 +95,12 @@ public class MiniMax {
      */
     private void applyMove(@NotNull Edge edge) {
         //TODO: Modify 'board' with move stored in edge. Keep track of the coordinates of any pieces that changed type, store those in edge.
+        int row = edge.getMove().getInitialCell().getRow();
+        int col = edge.getMove().getInitialCell().getColumn();
+        int rowFinal = edge.getMove().getFinalCell().getRow();
+        int colFinal = edge.getMove().getFinalCell().getColumn();
 
+        Movement.setBoard(board);
     }
 
     /**
@@ -124,6 +131,54 @@ public class MiniMax {
             //TODO: Generate moves MIN's game pieces can make
         }
         return null;
+    }
+
+    /**
+     * Dragon moves, Guard surrounded by three Dragons is converted
+     */
+    @Test
+    public void testApplyMove_1() {
+
+    }
+    @Test
+    public void testUndoMove_1() {
+
+    }
+
+    /**
+     * Guard moves into three Dragons, converts into Dragon.
+     */
+    @Test
+    public void testApplyMove_2() {
+
+    }
+    @Test
+    public void testUndoMove_2() {
+
+    }
+
+    /**
+     * Guard captures Dragon
+     */
+    @Test
+    public void testApplyMove_3() {
+
+    }
+    @Test
+    public void testUndoMove_3() {
+
+    }
+
+    /**
+     * Move piece, no changed pieces.
+     */
+    @Test
+    public void testApplyMove_4() {
+
+    }
+    @Test
+    public void testUndoMove_4() {
+
     }
 
 }

@@ -1,5 +1,7 @@
 package game.pieces;
 
+import java.util.Objects;
+
 /**
  * The abstract class which is extended by all game pieces. The pieces are classes so they can keep track of their own
  * statistics such as movements.

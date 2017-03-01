@@ -22,7 +22,7 @@ public class Game {
     public Game() {
         currentTurn = Team.MAN;
         board = new Board();
-        Movement.setBoard(board);
+        Movement.setBoard(board.getCells());
         endGameState = false;
     }
 
