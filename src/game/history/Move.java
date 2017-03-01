@@ -19,7 +19,7 @@ public class Move {
      * @param newRow The final row
      * @param newColumn The final column
      */
-    Move(int row, int column, int newRow, int newColumn) {
+    public Move(int row, int column, int newRow, int newColumn) {
         move = new Pair<>(new Cell(row,column), new Cell(newRow,newColumn));
     }
 
