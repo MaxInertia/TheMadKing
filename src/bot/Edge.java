@@ -35,20 +35,21 @@ public class Edge {
     public Edge() {
     	this.delta = new ArrayList<Integer> ();
     }
-    /**
-     * Constructor class for each edge in the minimax tree.
-     * @param moves A numerical list of changes made (x0, y0, x, y)
-     */
-    public Edge(ArrayList<Integer> moves) {
-    	this.delta = moves;
+
+    public Edge(Integer row, Integer column) {
+    	this.delta = new ArrayList<Integer> ();
+    	this.delta.add(row);
+    	this.delta.add(column);
     }
     /**
      * Constructor class for each edge in the minimax tree.
      * @param moves A numerical list of changes made (x0, y0, x, y)
      * @param children A list of type node for children associated with this node.
      */
-    public Edge (ArrayList<Integer> moves, ArrayList<Edge> children) {
-    	this.delta = moves;
+    public Edge (Integer row, Integer column, ArrayList<Edge> children) {
+    	this.delta = new ArrayList<Integer> ();
+    	this.delta.add(row);
+    	this.delta.add(column);
     	this.children = children;
     }
     /**
@@ -57,8 +58,10 @@ public class Edge {
      * @param children A list of type node for children associated with this node.
      * @param nodeType An enumerated list for declaring what player is associated with this node (min or max).
      */
-    public Edge (ArrayList<Integer> moves, ArrayList<Edge> children, type nodeType) {
-    	this.delta = moves;
+    public Edge (Integer row, Integer column, ArrayList<Edge> children, type nodeType) {
+    	this.delta = new ArrayList<Integer> ();
+    	this.delta.add(row);
+    	this.delta.add(column);
     	this.children = children;
     	this.NodeType = nodeType;
     }
