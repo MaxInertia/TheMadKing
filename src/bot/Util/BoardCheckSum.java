@@ -2,6 +2,7 @@ package bot.Util;
 
 import game.history.Move;
 import game.pieces.Piece;
+import views.game_view.Constants;
 
 public class BoardCheckSum implements CheckSum {
 
@@ -59,39 +60,32 @@ public class BoardCheckSum implements CheckSum {
 	public String getCheckSum(Piece[][] board) {
 		// In case we are given a board without a known checksum,
 		// calculate it by going though each tile.
-		
-		int boardRows = 5;
-		int boardColumns = 5;
-		
+		int boardRows = Constants.COLUMN_ROW_COUNT;
+		int boardColumns = Constants.COLUMN_ROW_COUNT;
 		int columnValue = 0;
 		int rowValue = 0;
-		
-		String column = "C";
-		String row = "R";
-		
 		boolean[] rowCheck = new boolean[boardRows];
 		boolean[] columnCheck = new boolean[boardColumns];
 		for(int i=0; i<boardRows; i++) rowCheck[i] = false;
 		for(int i=0; i<boardColumns; i++) columnCheck[i] = false;
 		
 		// Due to conventions setup, checksum will now be R then C 1:29AM 2017-03-01
-		
-		
+
 		// Hard coded values
-		for (int i = 0; i < boardRows; i++) {
-			for (int j = 0; j < boardColumns; j++) {
+		for (int r = 0; r < boardRows; r++) {
+			for (int c = 0; c < boardColumns; c++) {
 				// Read row by row.
-				System.out.println("[BoardCheckSum.java]\tReading row "+i);
+				System.out.println("[BoardCheckSum.java]\tReading row "+r);
 				
-				if (board[i][j] != null) {
+				if (board[r][c] != null) {
 					// Was something.
 					// As we aren't in the extended version, ignore the type.
-					System.out.println("[BoardCheckSum.java]\tDetected something in row "+i);
+					System.out.println("[BoardCheckSum.java]\tDetected something in row "+r);
 					
-					if (!rowCheck[i]) {
+					if (!rowCheck[r]) {
 						// Count the value
-						rowCheck[i] = true;
-						rowValue += (int) Math.pow(2, i);
+						rowCheck[r] = true;
+						rowValue += (int) Math.pow(2, r);
 						System.out.println("[BoardCheckSum.java]\tRowValue is now "+rowValue);
 						break;
 					}
@@ -101,21 +95,21 @@ public class BoardCheckSum implements CheckSum {
 		System.out.println("[BoardCheckSum.java]\tFINAL RowValue is now "+rowValue);
 		
 		// Hard coded values
-		for (int i = 0; i < boardColumns; i++) {
-			for (int j = 0; j < boardRows; j++) {
+		for (int c = 0; c < boardColumns; c++) {
+			for (int r = 0; r < boardRows; r++) {
 				// Read column by column
 				// Read row by row.
-				System.out.println("[BoardCheckSum.java]\tReading column "+i);
+				System.out.println("[BoardCheckSum.java]\tReading column "+c);
 				
-				if (board[i][j] != null) {
+				if (board[r][c] != null) {
 					// Was something.
 					// As we aren't in the extended version, ignore the type.
-					System.out.println("[BoardCheckSum.java]\tDetected something in column "+i);
+					System.out.println("[BoardCheckSum.java]\tDetected something in column "+c);
 					
-					if (!columnCheck[i]) {
+					if (!columnCheck[c]) {
 						// Count the value
-						columnCheck[i] = true;
-						columnValue += (int) Math.pow(2, i);
+						columnCheck[c] = true;
+						columnValue += (int) Math.pow(2, c);
 						System.out.println("[BoardCheckSum.java]\tColumnValue is now "+columnValue);
 						break;
 					}
@@ -125,7 +119,7 @@ public class BoardCheckSum implements CheckSum {
 		System.out.println("[BoardCheckSum.java]\tFINAL ColumnValue is now "+columnValue);		
         
 		// Mash everything together as a string and return it.
-		return rowValue+column+columnValue+row;
+		return rowValue+"C"+columnValue+"R";
 	}
 
 	@Override
@@ -138,13 +132,10 @@ public class BoardCheckSum implements CheckSum {
 	public String getExtCheckSum(Piece[][] board) {
 		// In case we are given a board without a known checksum,
 		// calculate it by going though each tile.
-		
 		int boardRows = 5;
 		int boardColumns = 5;
-		
 		int columnValue = 0;
 		int rowValue = 0;
-		
 		String column = "C";
 		String row = "R";
 		String guard = "G";
@@ -158,18 +149,18 @@ public class BoardCheckSum implements CheckSum {
 		for(int i=0; i<boardColumns; i++) columnCheck[i] = false;
 		
 		// Hard coded values
-		for (int i = 0; i < boardRows; i++) {
-			for (int j = 0; j < boardColumns; j++) {
+		for (int r = 0; r < boardRows; r++) {
+			for (int c = 0; c < boardColumns; c++) {
 				// Read row by row.
-				System.out.println("[BoardCheckSum.java]\tReading row "+i);
+				System.out.println("[BoardCheckSum.java]\tReading row "+r);
 				
-				if (board[i][j] == null) {
+				if (board[r][c] == null) {
 					// Go on to the next thing.
 				} else {
 					// Wasn't something.
 					// As we aren't in the extended version, ignore it.
-					System.out.println("[BoardCheckSum.java]\tDetected something in row "+i);
-					rowValue += (int) Math.pow(2, i);
+					System.out.println("[BoardCheckSum.java]\tDetected something in row "+r);
+					rowValue += (int) Math.pow(2, r);
 					System.out.println("[BoardCheckSum.java]\tRowValue is now "+rowValue);
 					break;
 				}
@@ -178,18 +169,18 @@ public class BoardCheckSum implements CheckSum {
 		System.out.println("[BoardCheckSum.java]\tFINAL RowValue is now "+rowValue);
 		
 		// Hard coded values
-		for (int i = 0; i < boardColumns; i++) {
-			for (int j = 0; j < boardRows; j++) {
+		for (int c = 0; c < boardColumns; c++) {
+			for (int r = 0; r < boardRows; r++) {
 				// Read column by column
-				System.out.println("[BoardCheckSum.java]\tReading column "+i);
+				System.out.println("[BoardCheckSum.java]\tReading column "+c);
 				
-				if (board[i][j] == null) {
+				if (board[r][c] == null) {
 					// Go on to the next thing.
 				} else {
 					// Wasn't something.
 					// As we aren't in the extended version, ignore it.
-					System.out.println("[BoardCheckSum.java]\tDetected something in column "+i);
-					columnValue += (int) Math.pow(2, i);
+					System.out.println("[BoardCheckSum.java]\tDetected something in column "+c);
+					columnValue += (int) Math.pow(2, c);
 					System.out.println("[BoardCheckSum.java]\tColumnValue is now "+rowValue);
 					break;
 				}
