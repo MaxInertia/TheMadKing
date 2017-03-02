@@ -75,7 +75,7 @@ public class BoardCheckSum implements CheckSum {
 		for (int r = 0; r < boardRows; r++) {
 			for (int c = 0; c < boardColumns; c++) {
 				// Read row by row.
-				System.out.println("[BoardCheckSum.java]\tReading row "+r);
+				//System.out.println("[BoardCheckSum.java]\tReading row "+r);
 				
 				if (board[r][c] != null) {
 					// Was something.
@@ -99,7 +99,7 @@ public class BoardCheckSum implements CheckSum {
 			for (int r = 0; r < boardRows; r++) {
 				// Read column by column
 				// Read row by row.
-				System.out.println("[BoardCheckSum.java]\tReading column "+c);
+				//System.out.println("[BoardCheckSum.java]\tReading column "+c);
 				
 				if (board[r][c] != null) {
 					// Was something.

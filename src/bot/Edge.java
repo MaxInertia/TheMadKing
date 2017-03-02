@@ -88,25 +88,19 @@ public class Edge {
     	delta.add(col);
     }
 
-    public int[] getChange(int num) {
-        int[] change = new int[2];
-        if(delta.size()< (4 + (num+1))) {
-            change[0] = -1;
-            change[1] = -1;
-        } else {
-            change[0] = delta.get(4 + num);
-            change[1] = delta.get(5 + num);
-        }
-        return change;
+    public ArrayList<Integer> getChange() {
+        if(delta.size()<=4) return null;
+        ArrayList<Integer> changes = new ArrayList<>(delta.subList(4,delta.size()));
+        return changes;
     }
     
     /**
      * Remove a pair of integers that represent a move in the delta list.
      */
-    public void removedelta () {
-    	delta.remove(delta.size()-1);
-    	delta.remove(delta.size()-1);
-    }
+    //public void removedelta () {
+    //	delta.remove(delta.size()-1);
+    //	delta.remove(delta.size()-1);
+    //}
     
     /**
      * Initialize the delta list if it wasn't done before.
@@ -130,10 +124,10 @@ public class Edge {
     /**
      * Remove two pairs of integers in the delta list representing a move.
      */
-    public void removemove () {
-    	removedelta ();
-    	removedelta ();
-    }
+    //public void removemove () {
+    //	removedelta ();
+    //	removedelta ();
+    //}
     
     /**
      * Format the first 4 values in the delta list as a move.

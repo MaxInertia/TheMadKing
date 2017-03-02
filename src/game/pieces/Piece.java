@@ -1,7 +1,5 @@
 package game.pieces;
 
-import java.util.Objects;
-
 import static game.pieces.Piece.Type.GUARD;
 import static game.pieces.Piece.Type.KING;
 
@@ -10,6 +8,7 @@ import static game.pieces.Piece.Type.KING;
  * statistics such as movements.
  */
 public class Piece {
+    private static int pieceCount = 0;
 
     public enum Type {
         KING, GUARD, DRAGON;
@@ -27,8 +26,22 @@ public class Piece {
      */
     int captures;
 
+    public int id;
+
     public Piece(Type type) {
         this.type =type;
+        pieceCount++;
+        id = pieceCount;
+        System.out.println("Piece created with ID "+id);
+    }
+
+    /**
+     * Constructor used to clone a piece. Only used for testing.
+     * @param piece
+     */
+    public Piece(Piece piece) {
+        type = piece.type;
+        id = piece.id;
     }
 
     /**
