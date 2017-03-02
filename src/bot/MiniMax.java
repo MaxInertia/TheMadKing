@@ -4,6 +4,8 @@ import bot.heuristic.Heuristic;
 import com.sun.istack.internal.NotNull;
 import game.history.Move;
 import game.pieces.Piece;
+import game.pieces.Piece.Type;
+
 import org.junit.Test;
 import views.game_view.Constants;
 
@@ -183,23 +185,68 @@ public class MiniMax {
         Piece finalpiece = board[colFinal][rowFinal];
         Piece initpiece = board[colFinal][rowFinal];
         
-        switch (finalpiece.getType()) {
-	        case KING:
-	        	// Was this the same as it was initially?
-	        	if (initpiece.getType() == finalpiece.getType()) {
-	        		
-	        	} else {
-	        		// The piece changed.
-	        	}
+        // Remvoe the last to integers from the delta list.
+        edge.removedelta();
+        
+        if (finalpiece.getType() == null) {
+        	System.out.println("[MiniMax.java]\t Piece type was null.");
+        } else {
+        	switch (finalpiece.getType()) {
+        		case KING:
+		        	// Was this the same as it was initially?
+		        	if (initpiece.getType() == finalpiece.getType()) {
+		        		// It was the same type.
+		        		
+		        	} else {
+		        		// The piece changed. This should never happen.
+		        		System.out.println("[MiniMax.java]\t King piece changed type (somehow?)");
+		        	}
 	        	break;
-	        case GUARD:
-	        	
+	        	case GUARD:
+		        	// Was this the same as it was initially?
+		        	if (initpiece.getType() == finalpiece.getType()) {
+		        		// It was the same type.
+		        		
+		        		board[row][col] = board[rowFinal][colFinal];
+		        		board[rowFinal][colFinal] = null;
+		        		
+		        	} else {
+		        		// The piece changed, was originally a dragon.
+		        		
+		        		if (edge.getChange(1) == null) {
+		        			
+		        		} else {
+			        		board[row][col] = board[rowFinal][colFinal];
+			        		board[rowFinal][colFinal].changeType(Type.DRAGON);
+		        		}
+		        		
+		        	}
 	        	break;
-	        	
-	        case DRAGON:
-	        
-	        break;
+	        	case DRAGON:
+		        	// Was this the same as it was initially?
+		        	if (initpiece.getType() == finalpiece.getType()) {
+		        		// It was the same type, move piece back to where it started.
+		        		//Type tempType = finalpiece.getType();
+		        		
+		        		board[row][col] = board[rowFinal][colFinal];
+		        		board[row][col].changeType(Type.DRAGON);
+		        		board[rowFinal][colFinal] = null;
+		        		
+		        		
+		        	} else {
+		        		// The piece changed, the original piece was a guard.
+		        		board[row][col] = board[rowFinal][colFinal];
+		        		board[rowFinal][colFinal] = null;	
+		        		
+		        		// Set the original piece to be a guard.
+		        		board[row][col].changeType(Type.GUARD);
+		        		
+		        	}
+	        	break;
+        	}
         }
+        
+        
         
         // Move the pieces back to where they were.
         
