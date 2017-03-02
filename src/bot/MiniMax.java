@@ -173,25 +173,38 @@ public class MiniMax {
      * @param edge The edge containing the move to undo.
      */
     private static void undoMove(@NotNull Edge edge, @NotNull Piece[][] board) {
+    	System.out.println("[MiniMax.java]\t -----UNDO-----");
     	// Get the first 4 values in the delta.
         int row = edge.getMove().getInitialCell().getRow();
+        System.out.println("[MiniMax.java]\t"+row);
         int col = edge.getMove().getInitialCell().getColumn();
+        System.out.println("[MiniMax.java]\t"+col);
         int rowFinal = edge.getMove().getFinalCell().getRow();
+        System.out.println("[MiniMax.java]\t"+rowFinal);
         int colFinal = edge.getMove().getFinalCell().getColumn();
+        System.out.println("[MiniMax.java]\t"+colFinal);
         
         // First check to see if any pieces changed types (1 or more).
         // A dragon could have been removed, etc.
         
         Piece finalpiece = board[colFinal][rowFinal];
-        Piece initpiece = board[colFinal][rowFinal];
+        Piece initpiece = board[col][row];
         
         // Remvoe the last to integers from the delta list.
         edge.removedelta();
         
-        if (finalpiece.getType() == null) {
-        	System.out.println("[MiniMax.java]\t Piece type was null.");
-        } else {
-        	switch (finalpiece.getType()) {
+        if (finalpiece == null) {
+        	System.out.println("[MiniMax.java]\t Piece type was null (final).");
+        	finalpiece = new Piece (Type.TEMP);
+        }
+        if (initpiece == null) {
+        	System.out.println("[MiniMax.java]\t Piece type was null (init).");
+        	initpiece = new Piece (Type.TEMP);        	
+        } 
+
+   		System.out.println("[MiniMax.java]\t Final Piece type was "+finalpiece.getType());
+   		System.out.println("[MiniMax.java]\t Init Piece type was "+initpiece.getType());
+       	switch (finalpiece.getType()) {      	
         		case KING:
 		        	// Was this the same as it was initially?
 		        	if (initpiece.getType() == finalpiece.getType()) {
@@ -225,10 +238,14 @@ public class MiniMax {
 		        		// The piece changed, was originally a dragon.
 		        		
 		        		if (edge.getChange(1) == null) {
-		        			
+		        			System.out.println("[MiniMax.java]\t Guard case.");
 		        		} else {
+		        			// No piece was changed.
+		        			System.out.println("[MiniMax.java]\t "+edge.getChange(1)[0]);
+		        			System.out.println("[MiniMax.java]\t "+edge.getChange(1)[1]);
+		        			
 			        		board[row][col] = board[rowFinal][colFinal];
-			        		board[rowFinal][colFinal].changeType(Type.DRAGON);
+			        		board[rowFinal][colFinal] = null;
 		        		}
 		        		
 		        	}
@@ -240,26 +257,34 @@ public class MiniMax {
 		        		//Type tempType = finalpiece.getType();
 		        		
 		        		board[row][col] = board[rowFinal][colFinal];
-		        		board[row][col].changeType(Type.DRAGON);
+		        		System.out.println(board[rowFinal][colFinal]);
+		        		board[row][col] = new Piece (Type.DRAGON);
 		        		board[rowFinal][colFinal] = null;
 		        		
 		        	} else {
 		        		// The piece changed, the original piece was a guard.
-		        		board[row][col] = board[rowFinal][colFinal];
-		        		board[rowFinal][colFinal] = null;	
 		        		
-		        		// Set the original piece to be a guard.
-		        		board[row][col].changeType(Type.GUARD);
+		        		if (edge.getChange(1) == null) {
+		        			System.out.println("[MiniMax.java]\t Dragon case.");
+		        		} else {
+		        			// No piece was changed.
+			        		// Set the original piece to be a guard.
+			        		board[row][col] = new Piece(Type.GUARD);
+			        		
+			        		board[rowFinal][colFinal] = null;
+		        		}
 		        		
 		        	}
 	        	break;
+	        	case TEMP:
+	        		System.out.println("[MiniMax.java]\t Temp Piece shouldn't be used.");
+	        	break;
         	}
-        }
-        
-        
-        
         // Move the pieces back to where they were.
-        
+       	//System.out.println("[MiniMax.java]\t Data at init "+row+"r"+col+"c"+board[row][col].getType());
+       	//System.out.println("[MiniMax.java]\t Data at final "+rowFinal+"r"+colFinal+"c"+board[rowFinal][colFinal].getType());
+       	
+       	System.out.println("[MiniMax.java]\t -----UNDO-----");
     }
 
     public int[] getAdjacentCells(int r, int c) {
@@ -543,7 +568,6 @@ public class MiniMax {
             setup_4();
             applyMove(edge, board);
             undoMove(edge, board);
-            compare(r0,c0,rF,cF);
         }
 
         // --------------------------------------------------------
