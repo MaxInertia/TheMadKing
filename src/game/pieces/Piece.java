@@ -2,6 +2,9 @@ package game.pieces;
 
 import java.util.Objects;
 
+import static game.pieces.Piece.Type.GUARD;
+import static game.pieces.Piece.Type.KING;
+
 /**
  * The abstract class which is extended by all game pieces. The pieces are classes so they can keep track of their own
  * statistics such as movements.
@@ -36,6 +39,10 @@ public class Piece {
      */
     public void changeType(Type newType) {
         this.type = newType;
+    }
+
+    public boolean isHuman() {
+        return KING.equals(type) || GUARD.equals(type);
     }
 
     public Type getType() {

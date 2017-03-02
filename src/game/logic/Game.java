@@ -1,6 +1,5 @@
 package game.logic;
 
-import game.pieces.Dragon;
 import game.pieces.Piece;
 
 import static views.game_view.Constants.COLUMN_ROW_COUNT;
@@ -110,7 +109,7 @@ public class Game {
 
                     if (surroundingDragons >= 3) {
                         System.out.println("Guard at (" + c + "," + r+ ") turned into a Dragon!");
-                        Dragon dragon = new Dragon(r, c);
+                        Piece dragon = new Piece(Piece.Type.DRAGON);
                         board.cells[r][c] = dragon;
                     }
                     surroundingDragons = 0;

@@ -88,9 +88,16 @@ public class Edge {
     	delta.add(col);
     }
 
-    public Pair<Integer, Integer> getChange(int num) {
-        if(delta.size()< (4 + (num+1))) return null;
-        return new Pair<>(delta.get(4+num),delta.get(5+num));
+    public int[] getChange(int num) {
+        int[] change = new int[2];
+        if(delta.size()< (4 + (num+1))) {
+            change[0] = -1;
+            change[1] = -1;
+        } else {
+            change[0] = delta.get(4 + num);
+            change[1] = delta.get(5 + num);
+        }
+        return change;
     }
     
     /**

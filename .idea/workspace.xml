@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="add changeType method to Piece class">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/game/pieces/Dragon.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/game/pieces/Guard.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/game/pieces/King.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/bot/Edge.java" afterPath="$PROJECT_DIR$/src/bot/Edge.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/bot/MiniMax.java" afterPath="$PROJECT_DIR$/src/bot/MiniMax.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/logic/Board.java" afterPath="$PROJECT_DIR$/src/game/logic/Board.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/logic/Game.java" afterPath="$PROJECT_DIR$/src/game/logic/Game.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/pieces/Piece.java" afterPath="$PROJECT_DIR$/src/game/pieces/Piece.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -76,8 +82,8 @@
             <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/src/game/logic/Game.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="391">
-                    <caret line="23" column="28" lean-forward="false" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
+                  <state relative-caret-position="2006">
+                    <caret line="120" column="0" lean-forward="true" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
                     <folding>
                       <element signature="imports" expanded="true" />
                       <element signature="method#printBoard#0;class#Game#0" expanded="false" />
@@ -89,14 +95,14 @@
             <file leaf-file-name="Board.java" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/src/game/logic/Board.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="374">
-                    <caret line="25" column="20" lean-forward="true" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
+                  <state relative-caret-position="408">
+                    <caret line="24" column="13" lean-forward="true" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
                     <folding />
                   </state>
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="Movement.java" pinned="false" current-in-tab="true">
+            <file leaf-file-name="Movement.java" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/src/game/logic/Movement.java">
                 <provider selected="true" editor-type-id="text-editor">
                   <state relative-caret-position="510">
@@ -109,12 +115,20 @@
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="Piece.java" pinned="false" current-in-tab="false">
+            <file leaf-file-name="Piece.java" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/src/game/pieces/Piece.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="187">
-                    <caret line="11" column="28" lean-forward="false" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
-                    <folding />
+                  <state relative-caret-position="680">
+                    <caret line="40" column="28" lean-forward="false" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
+                    <folding>
+                      <element signature="imports" expanded="true" />
+                      <element signature="e#584#585#0" expanded="true" />
+                      <element signature="e#615#616#0" expanded="true" />
+                      <element signature="e#861#862#0" expanded="true" />
+                      <element signature="e#896#897#0" expanded="true" />
+                      <element signature="e#928#929#0" expanded="true" />
+                      <element signature="e#990#991#0" expanded="true" />
+                    </folding>
                   </state>
                 </provider>
               </entry>
@@ -145,8 +159,8 @@
       <file leaf-file-name="MiniMax.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/bot/MiniMax.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="182" column="8" lean-forward="true" selection-start-line="182" selection-start-column="8" selection-end-line="182" selection-end-column="8" />
+            <state relative-caret-position="535">
+              <caret line="505" column="34" lean-forward="true" selection-start-line="505" selection-start-column="34" selection-end-line="505" selection-end-column="34" />
               <folding>
                 <element signature="docComment;class#MiniMax#0" expanded="false" />
                 <element signature="method#MiniMax#0;class#MiniMax#0" expanded="false" />
@@ -155,13 +169,8 @@
                 <element signature="docComment;method#search#0;class#MiniMax#0" expanded="false" />
                 <element signature="method#search#0;class#MiniMax#0" expanded="false" />
                 <element signature="docComment;method#applyMove#0;class#MiniMax#0" expanded="false" />
-                <element signature="docComment;method#undoMove#0;class#MiniMax#0" expanded="false" />
-                <element signature="docComment;method#generateEdges#0;class#MiniMax#0" expanded="false" />
-                <element signature="method#generateEdges#0;class#MiniMax#0" expanded="false" />
                 <element signature="docComment;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
-                <element signature="class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
                 <element signature="docComment;method#setup_1#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
-                <element signature="method#setup_1#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
                 <element signature="method#testApplyMove_1#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
                 <element signature="method#testUndoMove_1#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
                 <element signature="method#testInverse_1#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
@@ -171,16 +180,13 @@
                 <element signature="method#testUndoMove_2#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
                 <element signature="method#testInverse_2#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
                 <element signature="docComment;method#setup_3#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
-                <element signature="method#setup_3#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
                 <element signature="method#testApplyMove_3#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
                 <element signature="method#testUndoMove_3#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
                 <element signature="method#testInverse_3#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
                 <element signature="docComment;method#setup_4#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
-                <element signature="method#setup_4#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
                 <element signature="method#testApplyMove_4#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
                 <element signature="method#testUndoMove_4#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
                 <element signature="method#testInverse_4#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
-                <element signature="method#duplicateBoard#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
                 <element signature="method#compare#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
                 <element signature="method#assertSame#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
               </folding>
@@ -191,8 +197,8 @@
       <file leaf-file-name="Edge.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/bot/Edge.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="91" column="52" lean-forward="false" selection-start-line="91" selection-start-column="52" selection-end-line="91" selection-end-column="52" />
+            <state relative-caret-position="340">
+              <caret line="99" column="22" lean-forward="true" selection-start-line="99" selection-start-column="22" selection-end-line="99" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -235,6 +241,12 @@
       <find>getCells()</find>
       <find>board.[</find>
       <find>newColumn</find>
+      <find>cTemp</find>
+      <find>ZB</find>
+      <find>j2</find>
+      <find>j_1</find>
+      <find>j_AdjCells</find>
+      <find>piece_i</find>
     </findStrings>
     <replaceStrings>
       <replace>BOARD_PADDING</replace>
@@ -244,11 +256,16 @@
       <replace>row</replace>
       <replace>newColumn</replace>
       <replace>newRow</replace>
-      <replace>c</replace>
       <replace>4</replace>
       <replace>Edge</replace>
       <replace>board[</replace>
       <replace>cTemp</replace>
+      <replace>c</replace>
+      <replace>adjCells_i</replace>
+      <replace>j_2</replace>
+      <replace>j1</replace>
+      <replace>secondary_AdjCells</replace>
+      <replace>primary_Piece</replace>
     </replaceStrings>
   </component>
   <component name="FindManager">
@@ -301,9 +318,7 @@
         <option value="$PROJECT_DIR$/src/bot/Node.java" />
         <option value="$PROJECT_DIR$/src/bot/BotViewModel.java" />
         <option value="$PROJECT_DIR$/src/game/GameTest.java" />
-        <option value="$PROJECT_DIR$/src/game/pieces/Piece.java" />
         <option value="$PROJECT_DIR$/src/game/logic/Movement.java" />
-        <option value="$PROJECT_DIR$/src/game/logic/Game.java" />
         <option value="$PROJECT_DIR$/src/bot/Util/CheckSum.java" />
         <option value="$PROJECT_DIR$/src/game/pieces/King.java" />
         <option value="$PROJECT_DIR$/src/game/pieces/Guard.java" />
@@ -314,7 +329,10 @@
         <option value="$PROJECT_DIR$/src/bot/heuristic/BasicHeuristic.java" />
         <option value="$PROJECT_DIR$/src/bot/Util/BoardCheckSum.java" />
         <option value="$PROJECT_DIR$/src/bot/BotController.java" />
+        <option value="$PROJECT_DIR$/src/game/logic/Board.java" />
+        <option value="$PROJECT_DIR$/src/game/logic/Game.java" />
         <option value="$PROJECT_DIR$/src/bot/Edge.java" />
+        <option value="$PROJECT_DIR$/src/game/pieces/Piece.java" />
         <option value="$PROJECT_DIR$/src/bot/MiniMax.java" />
       </list>
     </option>
@@ -1064,7 +1082,21 @@
       <option name="project" value="LOCAL" />
       <updated>1488404702769</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Implement MiniMax.applyChanges()">
+      <created>1488405573376</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1488405573376</updated>
+    </task>
+    <task id="LOCAL-00007" summary="add changeType method to Piece class">
+      <created>1488407316523</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1488407316523</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1100,19 +1132,19 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83418000" />
+    <option name="totallyTimeSpent" value="90604000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35835096" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1871036" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20824525" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15010571" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15010571" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29635417" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1166,7 +1198,9 @@
     <MESSAGE value="Update Game class to use new version of Movement class." />
     <MESSAGE value="Add interface for BoardCheckSum" />
     <MESSAGE value="Various Changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Various Changes" />
+    <MESSAGE value="Implement MiniMax.applyChanges()" />
+    <MESSAGE value="add changeType method to Piece class" />
+    <option name="LAST_COMMIT_MESSAGE" value="add changeType method to Piece class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1245,7 +1279,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
           <caret line="32" column="23" lean-forward="true" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#584#585#0" expanded="true" />
+            <element signature="e#615#616#0" expanded="true" />
+            <element signature="e#861#862#0" expanded="true" />
+            <element signature="e#896#897#0" expanded="true" />
+            <element signature="e#928#929#0" expanded="true" />
+            <element signature="e#990#991#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1430,71 +1472,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/pieces/Piece.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="28" lean-forward="false" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/logic/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="28" lean-forward="false" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#printBoard#0;class#Game#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/logic/Board.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="25" column="20" lean-forward="true" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/bot/Util/CheckSum.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="22" column="74" lean-forward="false" selection-start-line="22" selection-start-column="74" selection-end-line="22" selection-end-column="74" />
           <folding>
             <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/pieces/Guard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="26" lean-forward="false" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
-          <folding>
-            <element signature="e#113#114#0" expanded="true" />
-            <element signature="e#146#147#0" expanded="true" />
-            <element signature="e#168#169#0" expanded="true" />
-            <element signature="e#201#202#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/pieces/King.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="12" column="25" lean-forward="false" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/pieces/Dragon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="12" column="27" lean-forward="false" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
-          <folding>
-            <element signature="e#166#167#0" expanded="true" />
-            <element signature="e#200#201#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1546,18 +1529,77 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/pieces/King.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="12" column="25" lean-forward="false" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/pieces/Dragon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="12" column="27" lean-forward="false" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/pieces/Guard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="12" column="26" lean-forward="false" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/logic/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="13" lean-forward="true" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/logic/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2006">
+          <caret line="120" column="0" lean-forward="true" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#printBoard#0;class#Game#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/bot/Edge.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="91" column="52" lean-forward="false" selection-start-line="91" selection-start-column="52" selection-end-line="91" selection-end-column="52" />
+        <state relative-caret-position="340">
+          <caret line="99" column="22" lean-forward="true" selection-start-line="99" selection-start-column="22" selection-end-line="99" selection-end-column="22" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/pieces/Piece.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="40" column="28" lean-forward="false" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#584#585#0" expanded="true" />
+            <element signature="e#615#616#0" expanded="true" />
+            <element signature="e#861#862#0" expanded="true" />
+            <element signature="e#896#897#0" expanded="true" />
+            <element signature="e#928#929#0" expanded="true" />
+            <element signature="e#990#991#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/bot/MiniMax.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="182" column="8" lean-forward="true" selection-start-line="182" selection-start-column="8" selection-end-line="182" selection-end-column="8" />
+        <state relative-caret-position="535">
+          <caret line="505" column="34" lean-forward="true" selection-start-line="505" selection-start-column="34" selection-end-line="505" selection-end-column="34" />
           <folding>
             <element signature="docComment;class#MiniMax#0" expanded="false" />
             <element signature="method#MiniMax#0;class#MiniMax#0" expanded="false" />
@@ -1566,13 +1608,8 @@
             <element signature="docComment;method#search#0;class#MiniMax#0" expanded="false" />
             <element signature="method#search#0;class#MiniMax#0" expanded="false" />
             <element signature="docComment;method#applyMove#0;class#MiniMax#0" expanded="false" />
-            <element signature="docComment;method#undoMove#0;class#MiniMax#0" expanded="false" />
-            <element signature="docComment;method#generateEdges#0;class#MiniMax#0" expanded="false" />
-            <element signature="method#generateEdges#0;class#MiniMax#0" expanded="false" />
             <element signature="docComment;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
-            <element signature="class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
             <element signature="docComment;method#setup_1#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
-            <element signature="method#setup_1#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
             <element signature="method#testApplyMove_1#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
             <element signature="method#testUndoMove_1#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
             <element signature="method#testInverse_1#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
@@ -1582,16 +1619,13 @@
             <element signature="method#testUndoMove_2#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
             <element signature="method#testInverse_2#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
             <element signature="docComment;method#setup_3#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
-            <element signature="method#setup_3#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
             <element signature="method#testApplyMove_3#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
             <element signature="method#testUndoMove_3#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
             <element signature="method#testInverse_3#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
             <element signature="docComment;method#setup_4#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
-            <element signature="method#setup_4#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
             <element signature="method#testApplyMove_4#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
             <element signature="method#testUndoMove_4#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
             <element signature="method#testInverse_4#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
-            <element signature="method#duplicateBoard#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
             <element signature="method#compare#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
             <element signature="method#assertSame#0;class#Unit_Tests#0;class#MiniMax#0" expanded="false" />
           </folding>

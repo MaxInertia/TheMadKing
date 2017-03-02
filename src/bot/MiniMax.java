@@ -3,15 +3,13 @@ package bot;
 import bot.heuristic.Heuristic;
 import com.sun.istack.internal.NotNull;
 import game.history.Move;
-import game.pieces.Dragon;
-import game.pieces.Guard;
-import game.pieces.King;
 import game.pieces.Piece;
 import org.junit.Test;
 import views.game_view.Constants;
 
 import java.util.ArrayList;
 
+import static java.lang.Math.abs;
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 import static org.junit.Assert.assertTrue;
@@ -125,30 +123,28 @@ public class MiniMax {
             for(int c=0; c<Constants.COLUMN_ROW_COUNT; c++) {
                 if(board[r][c]!=null && board[r][c].getType().equals(Piece.Type.GUARD)) {
                     int numberSurrounding = 0;
-                    int rTemp = r;
-                    int cTemp = c;
 
                     // Check how many dragons surround that guard
                     if(r-1 >= 0) {
-                        Piece piece =board[rTemp-1][cTemp];
+                        Piece piece =board[r-1][c];
                         if(piece!=null && (piece.getType()== Piece.Type.KING || piece.getType()== Piece.Type.GUARD) ) {
                             numberSurrounding++;
                         }
                     }
-                    if(rTemp+1 <= 4) {
-                        Piece piece =board[rTemp+1][cTemp];
+                    if(r+1 <= 4) {
+                        Piece piece =board[r+1][c];
                         if(piece!=null && (piece.getType()== Piece.Type.KING || piece.getType()== Piece.Type.GUARD) ) {
                             numberSurrounding++;
                         }
                     }
-                    if(cTemp-1 >= 0) {
-                        Piece piece =board[rTemp][cTemp-1];
+                    if(c-1 >= 0) {
+                        Piece piece =board[r][c-1];
                         if(piece!=null && (piece.getType()== Piece.Type.KING || piece.getType()== Piece.Type.GUARD) ) {
                             numberSurrounding++;
                         }
                     }
-                    if(cTemp+1 <= 4) {
-                        Piece piece =board[rTemp][cTemp+1];
+                    if(c+1 <= 4) {
+                        Piece piece =board[r][c+1];
                         if(piece!=null && (piece.getType() == Piece.Type.KING || piece.getType()== Piece.Type.GUARD) ) {
                             numberSurrounding++;
                         }
@@ -156,7 +152,7 @@ public class MiniMax {
 
                     // If surrounding dragons >= 3, convert dragon to guard
                     if(numberSurrounding>=3) {
-                        board[r][c] = new Dragon(r,c);
+                        board[r][c] = new Piece(Piece.Type.DRAGON);
                         edge.addChange(r,c);
                     }
                 }
@@ -209,6 +205,21 @@ public class MiniMax {
         
     }
 
+    public int[] getAdjacentCells(int r, int c) {
+        int[] adjCells = new int[8];
+
+        if(c+1 < 5) { adjCells[0] = r; adjCells[1] = c+1; }
+        else adjCells[0] = -1;
+        if(r-1 > 0) { adjCells[2] = r-1; adjCells[3] = c; }
+        else adjCells[2] = -1;
+        if(c-1 > 0) { adjCells[4] = r; adjCells[5] = c-1; }
+        else adjCells[4] = -1;
+        if(r+1 < 5) { adjCells[6] = r+1; adjCells[7] = c; }
+        else adjCells[6] = -1;
+
+        return adjCells;
+    }
+
     /**
      * Generates the list of moves the player can make, stored inside instances of the edge class.
      *
@@ -219,10 +230,77 @@ public class MiniMax {
      * @return list of edges that contain each possible move at this turn.
      */
     private @NotNull ArrayList<Edge> generateEdges(boolean isMax) {
+        ArrayList<Edge> edges = new ArrayList<>();
+        
         if(isMax) {
             //TODO: Generate moves MAX's game pieces can make
+            for(int r=0; r<Constants.COLUMN_ROW_COUNT; r++) { // -- Always 25 iterations
+                for(int c=0; c<Constants.COLUMN_ROW_COUNT; c++) { // -- Always 25 iterations
+
+                    // TEAM HUMAN
+                    if( board[r][c]!=null && (board[r][c].isHuman()) ) {
+                        int[] primary_AdjCells = getAdjacentCells(r,c);
+
+                        for(int i1 = 0, j1 = 1; i1<8; i1=i1+2, j1=j1+2) { // -- At most 4 iterations
+                            if(primary_AdjCells[i1] == -1) continue; // CASE 0: At edge of board!
+                            Piece primary_Piece = board[ primary_AdjCells[i1] ][ primary_AdjCells[j1] ];
+
+                            // CASE 1: If piece is null, cell is empty and can be moved into.
+                            if(primary_Piece==null) {
+                                edges.add(new Edge(r, c, primary_AdjCells[i1], primary_AdjCells[j1]));
+                            }
+
+                            // CASE 2: If I'm a King, check if I can jump a Guard.
+                            else if(board[r][c].getType().equals(Piece.Type.KING)) {
+                                int rJump = 2*abs(r - primary_AdjCells[i1]) + r;
+                                int cJump = 2*abs(c - primary_AdjCells[j1]) + c;
+                                if(rJump>=0 && rJump<Constants.COLUMN_ROW_COUNT && cJump>=0 && cJump<Constants.COLUMN_ROW_COUNT && board[rJump][cJump]==null) {
+                                    // Make sure King is not moving into group of three Dragons
+                                    int[] secondary_AdjCells = getAdjacentCells(rJump, cJump);
+                                    int surroundingDragons = 0;
+                                    for(int i2=0, j2=1; i2<8; i2=i2+2, j2=j2+2) {
+                                        Piece secondary_Piece = board[secondary_AdjCells[i2]][secondary_AdjCells[j2]];
+                                        if(secondary_Piece!=null && !secondary_Piece.isHuman()) surroundingDragons++;
+                                    }
+                                    if(surroundingDragons<3) edges.add(new Edge(r, c, rJump, cJump));
+                                }
+                            }
+
+                            // CASE 3: If piece is a Dragon, check if it can be captured.
+                            else if(primary_Piece.getType()== Piece.Type.DRAGON) { // -- At most 4 iterations
+                                int[] secondary_AdjCells = getAdjacentCells(primary_AdjCells[i1],primary_AdjCells[j1]);
+                                int assistanceAvailable = 0;
+                                for(int i2=0, j2=1; i2<8; i2=i2+2, j2=j2+2) {
+                                    if(secondary_AdjCells[i2] == -1) continue;
+                                    Piece secondary_Piece = board[secondary_AdjCells[i2]][secondary_AdjCells[j2]];
+                                    if( secondary_Piece!=null && (secondary_Piece.getType().equals(Piece.Type.GUARD) || secondary_Piece.getType().equals(Piece.Type.KING)) ) {
+                                        assistanceAvailable++;
+                                        if(assistanceAvailable == 2) break;
+                                    }
+                                } //eol-2-secondary
+                                if(assistanceAvailable == 2) {
+                                    edges.add(new Edge(r, c, primary_AdjCells[i1], primary_AdjCells[j1]));
+                                }
+                            }
+                        } //eol-1-primary
+                        
+                    }
+                    
+                    // TEAM DRAGON
+                    else if (board[r][c] != null){
+                        /*int[] primary_AdjCells = getSurroundingCells(r,c);
+                        for(int i1 = 0, j1 = 1; i1<8; i1=i1+2, j1=j1+2) { // -- At most 4 iterations
+                            if (primary_AdjCells[i1] == -1) continue; // CASE 0: At edge of board!
+                        }*/
+                    }
+                    
+                } //eol-c
+            } // eol-r
+            
         } else {
             //TODO: Generate moves MIN's game pieces can make
+            
+            
         }
         return null;
     }
@@ -252,15 +330,15 @@ public class MiniMax {
          */
         private void setup_1() {
             board = new Piece[5][5];
-            board[0][2] = new King();
-            board[1][1] = new Guard();
-            board[1][2] = new Guard();
-            board[1][3] = new Guard();
-            board[3][0] = new Dragon();
-            board[3][1] = new Dragon();
-            board[3][2] = new Dragon();
-            board[3][3] = new Dragon();
-            board[3][4] = new Dragon();
+            board[0][2] = new Piece(Piece.Type.KING);
+            board[1][1] = new Piece(Piece.Type.GUARD);
+            board[1][2] = new Piece(Piece.Type.GUARD);
+            board[1][3] = new Piece(Piece.Type.GUARD);
+            board[3][0] = new Piece(Piece.Type.DRAGON);
+            board[3][1] = new Piece(Piece.Type.DRAGON);
+            board[3][2] = new Piece(Piece.Type.DRAGON);
+            board[3][3] = new Piece(Piece.Type.DRAGON);
+            board[3][4] = new Piece(Piece.Type.DRAGON);
             constantBoard = duplicateBoard(board);
             r0 = 1; c0 = 2; rF = 2; cF = 2;
             edge = new Edge(r0,c0,rF,cF);
@@ -299,10 +377,10 @@ public class MiniMax {
          */
         private void setup_2() {
             board = new Piece[5][5];
-            board[2][2] = new Guard();
-            board[2][1] = new Dragon();
-            board[3][2] = new Dragon();
-            board[3][3] = new Dragon();
+            board[2][2] = new Piece(Piece.Type.GUARD);
+            board[2][1] = new Piece(Piece.Type.DRAGON);
+            board[3][2] = new Piece(Piece.Type.DRAGON);
+            board[3][3] = new Piece(Piece.Type.DRAGON);
             constantBoard = duplicateBoard(board);
             r0 = 3; c0 = 3; rF = 2; cF = 3;
             edge = new Edge(r0,c0,rF,cF);
@@ -341,10 +419,10 @@ public class MiniMax {
          */
         private void setup_3() {
             board = new Piece[5][5];
-            board[1][2] = new Guard();
-            board[2][1] = new Dragon();
-            board[3][2] = new Dragon();
-            board[2][3] = new Dragon();
+            board[1][2] = new Piece(Piece.Type.GUARD);
+            board[2][1] = new Piece(Piece.Type.DRAGON);
+            board[3][2] = new Piece(Piece.Type.DRAGON);
+            board[2][3] = new Piece(Piece.Type.DRAGON);
             constantBoard = duplicateBoard(board);
             r0 = 3; c0 = 3; rF = 2; cF = 3;
             edge = new Edge(r0,c0,rF,cF);
@@ -383,10 +461,10 @@ public class MiniMax {
          */
         private void setup_4() {
             board = new Piece[5][5];
-            board[1][2] = new Guard();
-            board[2][1] = new Dragon();
-            board[3][2] = new Dragon();
-            board[2][3] = new Dragon();
+            board[1][2] = new Piece(Piece.Type.GUARD);
+            board[2][1] = new Piece(Piece.Type.DRAGON);
+            board[3][2] = new Piece(Piece.Type.DRAGON);
+            board[2][3] = new Piece(Piece.Type.DRAGON);
             constantBoard = duplicateBoard(board);
             r0 = 1; c0 = 2; rF = 2; cF = 2;
             edge = new Edge(r0,c0,rF,cF);
@@ -420,13 +498,13 @@ public class MiniMax {
                     if(board[row][col]==null) continue;
                     switch(board[row][col].getType()) {
                         case DRAGON:
-                            duplicate[row][col] = new Dragon(row,col);
+                            duplicate[row][col] = new Piece(Piece.Type.DRAGON);
                             break;
                         case GUARD:
-                            duplicate[row][col] = new Guard(row,col);
+                            duplicate[row][col] = new Piece(Piece.Type.GUARD);;
                             break;
                         case KING:
-                            duplicate[row][col] = new King(row,col);
+                            duplicate[row][col] = new Piece(Piece.Type.KING);
                             break;
                     }
                 }
