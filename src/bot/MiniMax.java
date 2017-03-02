@@ -196,10 +196,21 @@ public class MiniMax {
 		        	// Was this the same as it was initially?
 		        	if (initpiece.getType() == finalpiece.getType()) {
 		        		// It was the same type.
+		        		board[row][col] = board[rowFinal][colFinal];
+		        		board[rowFinal][colFinal] = null;
 		        		
 		        	} else {
 		        		// The piece changed. This should never happen.
-		        		System.out.println("[MiniMax.java]\t King piece changed type (somehow?)");
+		        		//System.out.println("[MiniMax.java]\t King piece changed type (somehow?)");
+		        		// The piece changed, was originally a dragon.
+		        		
+		        		if (edge.getChange(1) == null) {
+		        			
+		        		} else {
+			        		board[row][col] = board[rowFinal][colFinal];
+			        		board[rowFinal][colFinal].changeType(Type.DRAGON);
+		        		}
+		        		
 		        	}
 	        	break;
 	        	case GUARD:
@@ -231,7 +242,6 @@ public class MiniMax {
 		        		board[row][col] = board[rowFinal][colFinal];
 		        		board[row][col].changeType(Type.DRAGON);
 		        		board[rowFinal][colFinal] = null;
-		        		
 		        		
 		        	} else {
 		        		// The piece changed, the original piece was a guard.
