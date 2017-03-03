@@ -5,9 +5,6 @@ import players.bot.BotController;
 import players.Player;
 import game.history.Move;
 import game.pieces.Piece;
-import players.human.utilities.Constants;
-
-import java.util.ArrayList;
 
 import static players.human.utilities.Constants.COLUMN_ROW_COUNT;
 
@@ -22,10 +19,6 @@ public class Game implements Updateable{
     Board board;
 
     private boolean player1Wins;
-
-    public enum Team {
-        MAN, BEAST
-    }
 
     private Team currentTurn;
 
@@ -118,6 +111,7 @@ public class Game implements Updateable{
     }
 
     public boolean isGameOver(){
+        //TODO: If there are less than 3 Dragons, check if they are cornered
         return checkKingReachedEnd() || checkNoDragonsLeft() || checkIfKingSurrounded();
     }
 

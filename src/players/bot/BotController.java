@@ -11,6 +11,8 @@ import org.junit.Test;
 import players.Player;
 import game.logic.DupBoard;
 import game.logic.Updateable;
+import players.bot.heuristic.NonSpecialHeuristic;
+import players.bot.search.SearchMethod;
 
 import java.util.ArrayList;
 
@@ -21,12 +23,15 @@ import static org.junit.Assert.assertTrue;
  */
 public class BotController implements Player {
 
-    Updateable updater;
+    private SearchMethod searchMethod;
+    private Updateable updater;
+    private int depthLimit = 5;
 
     private BotController(){}
 
     public BotController(Updateable gameInstance) {
         updater = gameInstance;
+        searchMethod = SearchMethod.Factory.generateMiniMaxInstance(depthLimit, new NonSpecialHeuristic());
     }
 
     @Override
@@ -51,8 +56,8 @@ public class BotController implements Player {
 
         @Override
         protected Move call() throws Exception {
-            System.out.println("Search started running on Thread: "+Thread.currentThread());
-            return MiniMax.chooseMove(initialBoard,5);
+            System.out.println("MiniMax started running on Thread: "+Thread.currentThread());
+            return SearchMethod.chooseMove(initialBoard, depthLimit, searchMethod);
         }
 
         @Override
@@ -66,9 +71,6 @@ public class BotController implements Player {
     // -----------------------------------------------------------------------------------------------------------------
 
     public static class Unit_Tests {
-        //@RunWith(TestRunner.class)
-        //@Rule public JavaFXThreadingRule javafxRule = new JavaFXThreadingRule();
-
         private static String jFxThread = "";
         private static String onCallThread = "";
         private static String onSucceededThread = "";

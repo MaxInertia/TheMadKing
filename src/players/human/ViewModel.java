@@ -3,7 +3,6 @@ package players.human;
 import game.history.History;
 import game.history.Move;
 import game.logic.DupBoard;
-import game.logic.Game;
 import game.logic.Updateable;
 import javafx.scene.canvas.Canvas;
 
@@ -58,14 +57,6 @@ public class ViewModel extends Graphics {
         } else {
             //TODO: Display error message to Player
         }
-        /*
-        if(instance.board.getCells().gameOver()) {
-            if(instance.board.getCells().getActiveTeam().equals(Game.Team.BEAST)) {
-                instance.drawGameOver("The Mad King Wins!");
-            } else {
-                instance.drawGameOver("The Dragons Win!");
-            }
-        }*/
     }
 
 }

@@ -1,4 +1,4 @@
-package players.bot.Util;
+package players.bot._util;
 
 import game.history.Move;
 import game.pieces.Piece;
@@ -124,7 +124,6 @@ public class BoardCheckSum implements CheckSum {
 
 	@Override
 	public Move calculateMove(String checkSum, Piece[][] board) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

@@ -1,4 +1,4 @@
-package players.bot.Util;
+package players.bot._util;
 
 import game.history.Move;
 import game.pieces.Piece;

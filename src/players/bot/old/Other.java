@@ -16,7 +16,6 @@ public class Other {
      * @param edge The edge containing the move to apply to the board.
      */
     /*private static void applyMove(@NotNull Edge edge, @NotNull Piece[][] board) {
-        //TODO: Modify 'board' with move stored in edge. Keep track of the coordinates of any pieces that changed type, store those in edge.
         int row = edge.getMove().getInitialCell().getRow();
         int col = edge.getMove().getInitialCell().getColumn();
         int rowFinal = edge.getMove().getFinalCell().getRow();
