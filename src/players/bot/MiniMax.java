@@ -11,6 +11,8 @@ import players.bot.heuristic.NonSpecialHeuristic;
 import players.human.utilities.Constants;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Timer;
 
 import static java.lang.Math.*;
 import static org.junit.Assert.assertTrue;
@@ -22,7 +24,7 @@ public class MiniMax {
 
     private static MiniMax instance;
     private static BoardCheckSum bCS;
-    private static boolean deBugging = true;
+    private static boolean deBugging = false;
     
     private Heuristic heuristic;
     private int depthLimit;
@@ -39,7 +41,15 @@ public class MiniMax {
     static Move chooseMove(@NotNull DupBoard board, int depthLimit) {
         bCS = new BoardCheckSum();
         instance = new MiniMax(depthLimit, new NonSpecialHeuristic());
+
+        long startTime = System.currentTimeMillis();
+        long elapsedTime = 0L;
+
         instance.search(board,0,false);
+
+        elapsedTime = (new Date()).getTime() - startTime;
+        System.out.println("[MiniMax]\tSearch time:"+(elapsedTime/1000f)+" seconds.");
+
         Move bestMove = instance.minmaxMove;
         cleanUp();
         return bestMove;
@@ -93,7 +103,7 @@ public class MiniMax {
                         depth+1,
                         false
                 );
-                if(max(val, bestValue) <= val) {
+                if(abs(max(val, bestValue)-val) < 0.5) {
                     bestMove = aMove;
                     bestValue = val;
                 }
@@ -101,7 +111,7 @@ public class MiniMax {
 
         } else {
             bestValue = 1000f;
-            ArrayList<Move> possibleMoves = generateMoves(possibleBoard, true);
+            ArrayList<Move> possibleMoves = generateMoves(possibleBoard, false);
             for (int i = 0; i < possibleMoves.size(); i++) {
                 Move aMove = possibleMoves.get(i);
                 float val = search(
@@ -109,7 +119,7 @@ public class MiniMax {
                         depth + 1,
                         false
                 );
-                if (max(val, bestValue) <= val) {
+                if (abs(min(val, bestValue) - val) < 0.5) {
                     bestMove = aMove;
                     bestValue = val;
                 }
@@ -127,6 +137,10 @@ public class MiniMax {
             tabs += '\t';
         }
         System.out.println(tabs+message);
+    }
+
+    private static void print2(String message) {
+        if(deBugging) System.out.println(message);
     }
 
     /**

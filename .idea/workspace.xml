@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Fix bug allowing any player to move any piece">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/logic/Board.java" afterPath="$PROJECT_DIR$/src/game/logic/Board.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/logic/Game.java" afterPath="$PROJECT_DIR$/src/game/logic/Game.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src_tests/game/logic/MovementTests.java" afterPath="$PROJECT_DIR$/src_tests/game/logic/MovementTests.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/pieces/Piece.java" afterPath="$PROJECT_DIR$/src/game/pieces/Piece.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/players/bot/BotController.java" afterPath="$PROJECT_DIR$/src/players/bot/BotController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/players/bot/MiniMax.java" afterPath="$PROJECT_DIR$/src/players/bot/MiniMax.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/players/bot/Util/BoardCheckSum.java" afterPath="$PROJECT_DIR$/src/players/bot/Util/BoardCheckSum.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/players/human/HumanController.java" afterPath="$PROJECT_DIR$/src/players/human/HumanController.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -74,86 +78,122 @@
     <favorites_list name="JavaFxApplication" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Game.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/game/logic/Game.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="103" column="51" lean-forward="true" selection-start-line="103" selection-start-column="51" selection-end-line="103" selection-end-column="51" />
-              <folding>
-                <element signature="docComment;class#Game#0" expanded="false" />
-                <element signature="class#Team#0;class#Game#0" expanded="false" />
-                <element signature="docComment;method#basicSetup#0;class#Game#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Movement.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/game/logic/Movement.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-153">
-              <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MovementTests.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src_tests/game/logic/MovementTests.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="21" column="20" lean-forward="false" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Board.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/game/logic/Board.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="39" column="45" lean-forward="false" selection-start-line="39" selection-start-column="45" selection-end-line="39" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ViewModel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/players/human/ViewModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="23" column="32" lean-forward="true" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DupBoard.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/game/logic/DupBoard.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="15" column="11" lean-forward="false" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HumanController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/players/human/HumanController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-              <folding>
-                <element signature="class#MousePressed#0;class#HumanController#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="Game.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/game/logic/Game.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="697">
+                  <caret line="53" column="38" lean-forward="true" selection-start-line="53" selection-start-column="38" selection-end-line="53" selection-end-column="38" />
+                  <folding>
+                    <element signature="docComment;class#Game#0" expanded="false" />
+                    <element signature="class#Team#0;class#Game#0" expanded="false" />
+                    <element signature="docComment;method#basicSetup#0;class#Game#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Board.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/game/logic/Board.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="272">
+                  <caret line="49" column="69" lean-forward="false" selection-start-line="49" selection-start-column="69" selection-end-line="49" selection-end-column="69" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="HumanController.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/players/human/HumanController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="342">
+                  <caret line="45" column="31" lean-forward="false" selection-start-line="45" selection-start-column="31" selection-end-line="45" selection-end-column="31" />
+                  <folding>
+                    <element signature="e#1412#1413#0" expanded="true" />
+                    <element signature="e#1450#1451#0" expanded="true" />
+                    <element signature="class#MousePressed#0;class#HumanController#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="BotController.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/players/bot/BotController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="281">
+                  <caret line="48" column="52" lean-forward="false" selection-start-line="48" selection-start-column="52" selection-end-line="48" selection-end-column="52" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#542#543#0" expanded="true" />
+                    <element signature="e#580#581#0" expanded="true" />
+                    <element signature="e#2601#2969#0" expanded="true" />
+                    <element signature="e#2968#2969#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="MiniMax.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/players/bot/MiniMax.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="340">
+                  <caret line="20" column="26" lean-forward="true" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#4393#4394#0" expanded="true" />
+                    <element signature="e#4450#4451#0" expanded="true" />
+                    <element signature="method#generateMoves#0;class#MiniMax#0" expanded="false" />
+                    <element signature="method#getAdjacentCells#0;class#MiniMax#0" expanded="false" />
+                    <element signature="method#getDiagonalCells#0;class#MiniMax#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="BoardCheckSum.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/players/bot/Util/BoardCheckSum.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="354">
+                  <caret line="121" column="42" lean-forward="false" selection-start-line="121" selection-start-column="42" selection-end-line="121" selection-end-column="42" />
+                  <folding>
+                    <element signature="e#1290#1347#0" expanded="false" />
+                    <element signature="e#1750#1826#0" expanded="false" />
+                    <element signature="e#2066#2083#0" expanded="false" />
+                    <element signature="e#2659#2683#0" expanded="false" />
+                    <element signature="e#2818#2835#0" expanded="false" />
+                    <element signature="method#calculateMove#0;class#BoardCheckSum#0" expanded="false" />
+                    <element signature="method#getExtCheckSum#0;class#BoardCheckSum#0" expanded="false" />
+                    <element signature="e#3622#3679#0" expanded="false" />
+                    <element signature="e#4483#4503#0" expanded="false" />
+                    <element signature="e#5154#5174#0" expanded="false" />
+                    <element signature="docComment;class#Unit_Tests#0;class#BoardCheckSum#0" expanded="false" />
+                    <element signature="class#Unit_Tests#0;class#BoardCheckSum#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="NonSpecialHeuristic.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/players/bot/heuristic/NonSpecialHeuristic.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="323">
+                  <caret line="19" column="35" lean-forward="true" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -251,7 +291,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/bot/heuristic/Heuristic.java" />
         <option value="$PROJECT_DIR$/src/bot/Util/BoardCheckSum.java" />
         <option value="$PROJECT_DIR$/src/bot/Edge.java" />
         <option value="$PROJECT_DIR$/src/bot/heuristic/BasicHeuristic.java" />
@@ -286,7 +325,6 @@
         <option value="$PROJECT_DIR$/src/players/human/utilities/MouseEvents.java" />
         <option value="$PROJECT_DIR$/src/players/human/Main.java" />
         <option value="$PROJECT_DIR$/src/TestUtilities.java" />
-        <option value="$PROJECT_DIR$/src/players/bot/MiniMax.java" />
         <option value="$PROJECT_DIR$/src/tests/TestUtilities.java" />
         <option value="$PROJECT_DIR$/src/game/tests/MovementTests.java" />
         <option value="$PROJECT_DIR$/src/game/logic/GameTest.java" />
@@ -297,11 +335,13 @@
         <option value="$PROJECT_DIR$/src/players/human/Graphics.java" />
         <option value="$PROJECT_DIR$/src/players/Player.java" />
         <option value="$PROJECT_DIR$/src/players/human/ViewModel.java" />
-        <option value="$PROJECT_DIR$/src/players/human/HumanController.java" />
-        <option value="$PROJECT_DIR$/src/players/bot/BotController.java" />
         <option value="$PROJECT_DIR$/src/game/logic/Board.java" />
         <option value="$PROJECT_DIR$/src_tests/game/logic/MovementTests.java" />
         <option value="$PROJECT_DIR$/src/game/logic/Game.java" />
+        <option value="$PROJECT_DIR$/src/players/bot/Util/BoardCheckSum.java" />
+        <option value="$PROJECT_DIR$/src/players/bot/BotController.java" />
+        <option value="$PROJECT_DIR$/src/players/bot/MiniMax.java" />
+        <option value="$PROJECT_DIR$/src/players/human/HumanController.java" />
       </list>
     </option>
   </component>
@@ -435,7 +475,41 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="game" />
+              <option name="myItemId" value="players" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TheMadKing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TheMadKing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="players" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="heuristic" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -454,10 +528,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="game" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="logic" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -522,32 +592,6 @@
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="MovementTests.kingJump" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="game.logic.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="TheMadKing" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="game.logic" />
-      <option name="MAIN_CLASS_NAME" value="game.logic.MovementTests" />
-      <option name="METHOD_NAME" value="kingJump" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
@@ -622,6 +666,32 @@
       <option name="PACKAGE_NAME" value="game.logic" />
       <option name="MAIN_CLASS_NAME" value="game.logic.MovementTests" />
       <option name="METHOD_NAME" value="kingJump_DragonLateral_KingJump" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="BotController$Unit_Tests.test_threadsUsed" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="players.bot.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="TheMadKing" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="players.bot" />
+      <option name="MAIN_CLASS_NAME" value="players.bot.BotController$Unit_Tests" />
+      <option name="METHOD_NAME" value="test_threadsUsed" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -818,18 +888,18 @@
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Application.Main" />
       <item index="1" class="java.lang.String" itemvalue="JUnit.MovementTests" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.MovementTests.kingJump" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.MovementTests.kingKillDragon" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.MovementTests.kingJump_DragonLateral" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.MovementTests.kingJump_DragonLateral_KingJump" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.MovementTests.kingKillDragon" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.MovementTests.kingJump_DragonLateral" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.MovementTests.kingJump_DragonLateral_KingJump" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.BotController$Unit_Tests.test_threadsUsed" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.MovementTests" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.MovementTests.kingJump_DragonLateral_KingJump" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.MovementTests.kingJump_DragonLateral" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.MovementTests.kingKillDragon" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.MovementTests.kingJump" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.BotController$Unit_Tests.test_threadsUsed" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.MovementTests" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.MovementTests.kingJump_DragonLateral_KingJump" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.MovementTests.kingJump_DragonLateral" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.MovementTests.kingKillDragon" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
@@ -855,7 +925,7 @@
       <workItem from="1487658350266" duration="4540000" />
       <workItem from="1488232066009" duration="4150000" />
       <workItem from="1488331122351" duration="9852000" />
-      <workItem from="1488493575952" duration="15837000" />
+      <workItem from="1488493575952" duration="18170000" />
     </task>
     <task id="LOCAL-00001" summary="Change class for ease of use">
       <created>1488346205397</created>
@@ -941,10 +1011,23 @@
       <option name="project" value="LOCAL" />
       <updated>1488509546665</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Fix bug allowing any player to move any piece">
+      <created>1488510176131</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1488510176131</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TestHistory">
+    <history-entry file="BotController$Unit_Tests_test_threadsUsed - 2017.03.02 at 21h 09m 42s.xml">
+      <configuration name="BotController$Unit_Tests.test_threadsUsed" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="BotController$Unit_Tests_test_threadsUsed - 2017.03.02 at 21h 10m 12s.xml">
+      <configuration name="BotController$Unit_Tests.test_threadsUsed" configurationId="JUnit" />
+    </history-entry>
     <history-entry file="MovementTests - 2017.03.02 at 20h 03m 14s.xml">
       <configuration name="MovementTests" configurationId="JUnit" />
     </history-entry>
@@ -969,15 +1052,9 @@
     <history-entry file="MovementTests_kingJump_DragonLateral_KingJump - 2017.03.02 at 20h 03m 55s.xml">
       <configuration name="MovementTests.kingJump_DragonLateral_KingJump" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MovementTests_kingKillDragon - 2017.03.02 at 19h 57m 29s.xml">
-      <configuration name="MovementTests.kingKillDragon" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MovementTests_kingKillDragon - 2017.03.02 at 19h 58m 42s.xml">
-      <configuration name="MovementTests.kingKillDragon" configurationId="JUnit" />
-    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="135918000" />
+    <option name="totallyTimeSpent" value="138251000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="1" width="1932" height="1045" extended-state="0" />
@@ -989,7 +1066,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1627907" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2935378" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24534501" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15064102" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
@@ -997,7 +1074,7 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20481928" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31325302" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23877327" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1050,19 +1127,12 @@
     <MESSAGE value="Fix BoardCheckSum.getCheckSum()&#10;" />
     <MESSAGE value="Razzle Dazzle. After moving stuff randomly it started working." />
     <MESSAGE value="High level architecture changes." />
-    <option name="LAST_COMMIT_MESSAGE" value="High level architecture changes." />
+    <MESSAGE value="Fix bug allowing any player to move any piece" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix bug allowing any player to move any piece" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/game/logic/Board.java</url>
-          <line>68</line>
-          <properties />
-          <option name="timeStamp" value="45" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="46" />
+      <option name="time" value="48" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1128,27 +1198,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/players/bot/Util/BoardCheckSum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="101" column="18" lean-forward="false" selection-start-line="101" selection-start-column="18" selection-end-line="101" selection-end-column="18" />
-          <folding>
-            <element signature="e#1290#1347#0" expanded="false" />
-            <element signature="e#1750#1826#0" expanded="false" />
-            <element signature="e#2066#2083#0" expanded="false" />
-            <element signature="e#2653#2677#0" expanded="false" />
-            <element signature="e#2812#2829#0" expanded="false" />
-            <element signature="method#calculateMove#0;class#BoardCheckSum#0" expanded="false" />
-            <element signature="method#getExtCheckSum#0;class#BoardCheckSum#0" expanded="false" />
-            <element signature="e#3612#3669#0" expanded="false" />
-            <element signature="e#4473#4493#0" expanded="false" />
-            <element signature="e#5144#5164#0" expanded="false" />
-            <element signature="docComment;class#Unit_Tests#0;class#BoardCheckSum#0" expanded="false" />
-            <element signature="class#Unit_Tests#0;class#BoardCheckSum#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/game/logic/BoardModifier.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_111/src.zip!/java/lang/Object.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1182,16 +1231,6 @@
         <state relative-caret-position="51">
           <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/players/bot/heuristic/NonSpecialHeuristic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="55" lean-forward="false" selection-start-line="16" selection-start-column="55" selection-end-line="16" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1271,19 +1310,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/players/bot/MiniMax.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1286">
-          <caret line="136" column="6" lean-forward="true" selection-start-line="136" selection-start-column="6" selection-end-line="136" selection-end-column="6" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#generateMoves#0;class#MiniMax#0" expanded="false" />
-            <element signature="method#getAdjacentCells#0;class#MiniMax#0" expanded="false" />
-            <element signature="method#getDiagonalCells#0;class#MiniMax#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_111/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -1336,25 +1362,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/players/bot/BotController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="26" column="5" lean-forward="false" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#636#637#0" expanded="true" />
-            <element signature="e#709#710#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_111/javafx-src.zip!/javafx/scene/Scene.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="169">
           <caret line="2494" column="0" lean-forward="false" selection-start-line="2494" selection-start-column="0" selection-end-line="2494" selection-end-column="0" />
           <folding>
-            <element signature="e#66617#66618#0" expanded="true" />
-            <element signature="e#66663#66664#0" expanded="true" />
+            <element signature="e#66617#66618#0" expanded="false" />
+            <element signature="e#66663#66664#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1385,24 +1399,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/players/human/HumanController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding>
-            <element signature="class#MousePressed#0;class#HumanController#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/logic/Board.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="39" column="45" lean-forward="false" selection-start-line="39" selection-start-column="45" selection-end-line="39" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src_tests/game/logic/MovementTests.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="224">
@@ -1419,14 +1415,94 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/players/bot/Util/BoardCheckSum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="121" column="42" lean-forward="false" selection-start-line="121" selection-start-column="42" selection-end-line="121" selection-end-column="42" />
+          <folding>
+            <element signature="e#1290#1347#0" expanded="false" />
+            <element signature="e#1750#1826#0" expanded="false" />
+            <element signature="e#2066#2083#0" expanded="false" />
+            <element signature="e#2659#2683#0" expanded="false" />
+            <element signature="e#2818#2835#0" expanded="false" />
+            <element signature="method#calculateMove#0;class#BoardCheckSum#0" expanded="false" />
+            <element signature="method#getExtCheckSum#0;class#BoardCheckSum#0" expanded="false" />
+            <element signature="e#3622#3679#0" expanded="false" />
+            <element signature="e#4483#4503#0" expanded="false" />
+            <element signature="e#5154#5174#0" expanded="false" />
+            <element signature="docComment;class#Unit_Tests#0;class#BoardCheckSum#0" expanded="false" />
+            <element signature="class#Unit_Tests#0;class#BoardCheckSum#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/players/bot/BotController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="48" column="52" lean-forward="false" selection-start-line="48" selection-start-column="52" selection-end-line="48" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#542#543#0" expanded="true" />
+            <element signature="e#580#581#0" expanded="true" />
+            <element signature="e#2601#2969#0" expanded="true" />
+            <element signature="e#2968#2969#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/players/bot/MiniMax.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="26" lean-forward="true" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4393#4394#0" expanded="true" />
+            <element signature="e#4450#4451#0" expanded="true" />
+            <element signature="method#generateMoves#0;class#MiniMax#0" expanded="false" />
+            <element signature="method#getAdjacentCells#0;class#MiniMax#0" expanded="false" />
+            <element signature="method#getDiagonalCells#0;class#MiniMax#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/logic/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="49" column="69" lean-forward="false" selection-start-line="49" selection-start-column="69" selection-end-line="49" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/players/human/HumanController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="45" column="31" lean-forward="false" selection-start-line="45" selection-start-column="31" selection-end-line="45" selection-end-column="31" />
+          <folding>
+            <element signature="e#1412#1413#0" expanded="true" />
+            <element signature="e#1450#1451#0" expanded="true" />
+            <element signature="class#MousePressed#0;class#HumanController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/game/logic/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="103" column="51" lean-forward="true" selection-start-line="103" selection-start-column="51" selection-end-line="103" selection-end-column="51" />
+        <state relative-caret-position="697">
+          <caret line="53" column="38" lean-forward="true" selection-start-line="53" selection-start-column="38" selection-end-line="53" selection-end-column="38" />
           <folding>
             <element signature="docComment;class#Game#0" expanded="false" />
             <element signature="class#Team#0;class#Game#0" expanded="false" />
             <element signature="docComment;method#basicSetup#0;class#Game#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/players/bot/heuristic/NonSpecialHeuristic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="35" lean-forward="true" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

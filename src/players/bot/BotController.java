@@ -29,6 +29,12 @@ public class BotController implements Player {
     @Override
     public void notify(DupBoard board) {
         System.out.println("Bot has been informed of it's turn.");
+        SearchTask task = new SearchTask();
+        task.initialBoard = board;
+
+        Thread searchThread = new Thread(task);
+        searchThread.setDaemon(true);
+        searchThread.start();
     }
 
     @Override
@@ -37,22 +43,18 @@ public class BotController implements Player {
     class SearchTask extends Task<Move> {
         DupBoard initialBoard;
 
-        SearchTask() {
-            this.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
-                @Override
-                public void handle(WorkerStateEvent event) {
-                    System.out.println("setOnSucceeded running on Thread: "+Thread.currentThread());
-                    updater.update(getValue()); // Ends the Bots turn
-                }
-            });
-        }
-
         @Override
         protected Move call() throws Exception {
             System.out.println("Search started running on Thread: "+Thread.currentThread());
-            return MiniMax.chooseMove(initialBoard,0);
+            return MiniMax.chooseMove(initialBoard,5);
         }
 
+        @Override
+        protected void succeeded() {
+            super.succeeded();
+            System.out.println("setOnSucceeded running on Thread: "+Thread.currentThread());
+            updater.update(getValue()); // Ends the Bots turn
+        }
     }
 
     // -----------------------------------------------------------------------------------------------------------------
@@ -78,9 +80,9 @@ public class BotController implements Player {
                             try {
                                 jFxThread = Thread.currentThread().getName();
                                 BotController botController = new BotController();
-                                Task s = new Task(){
+                                SearchTask s = botController.new SearchTask(){
                                     @Override
-                                    protected Object call() throws Exception {
+                                    protected Move call() throws Exception {
                                         onCallThread = Thread.currentThread().getName();
                                         return null;
                                     }

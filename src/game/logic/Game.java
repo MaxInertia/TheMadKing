@@ -78,6 +78,7 @@ public class Game implements Updateable{
             return true;
         } else {
             System.out.println("------------- AN INVALID MOVE WAS ATTEMPTED ---------");
+            System.out.println("I: ("+row+","+column+")\nF: ("+newRow+","+newColumn+")");
         }
         return false;
     }

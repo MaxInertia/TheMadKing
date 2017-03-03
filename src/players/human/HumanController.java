@@ -43,6 +43,7 @@ public class HumanController implements Initializable, Player {
     @Override
     public void notify(DupBoard board) {
         System.out.println("It is now your turn!"); //TODO: Replace this with a graphical alert informing player of turn.
+        gvm.updateBoard(board);
     }
 
     @Override

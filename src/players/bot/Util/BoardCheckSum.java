@@ -80,19 +80,19 @@ public class BoardCheckSum implements CheckSum {
 				if (board[r][c] != null) {
 					// Was something.
 					// As we aren't in the extended version, ignore the type.
-					System.out.println("[BoardCheckSum.java]\tDetected something in row "+r);
+					//System.out.println("[BoardCheckSum.java]\tDetected something in row "+r);
 					
 					if (!rowCheck[r]) {
 						// Count the value
 						rowCheck[r] = true;
 						rowValue += (int) Math.pow(2, r);
-						System.out.println("[BoardCheckSum.java]\tRowValue is now "+rowValue);
+						//System.out.println("[BoardCheckSum.java]\tRowValue is now "+rowValue);
 						break;
 					}
 				}
 			}
 		}
-		System.out.println("[BoardCheckSum.java]\tFINAL RowValue is now "+rowValue);
+		//System.out.println("[BoardCheckSum.java]\tFINAL RowValue is now "+rowValue);
 		
 		// Hard coded values
 		for (int c = 0; c < boardColumns; c++) {
@@ -104,22 +104,22 @@ public class BoardCheckSum implements CheckSum {
 				if (board[r][c] != null) {
 					// Was something.
 					// As we aren't in the extended version, ignore the type.
-					System.out.println("[BoardCheckSum.java]\tDetected something in column "+c);
+					//System.out.println("[BoardCheckSum.java]\tDetected something in column "+c);
 					
 					if (!columnCheck[c]) {
 						// Count the value
 						columnCheck[c] = true;
 						columnValue += (int) Math.pow(2, c);
-						System.out.println("[BoardCheckSum.java]\tColumnValue is now "+columnValue);
+						//System.out.println("[BoardCheckSum.java]\tColumnValue is now "+columnValue);
 						break;
 					}
 				}
 			}
 		}
-		System.out.println("[BoardCheckSum.java]\tFINAL ColumnValue is now "+columnValue);		
+		//System.out.println("[BoardCheckSum.java]\tFINAL ColumnValue is now "+columnValue);
         
 		// Mash everything together as a string and return it.
-		return rowValue+"C"+columnValue+"R";
+		return rowValue+"R"+columnValue+"C";
 	}
 
 	@Override

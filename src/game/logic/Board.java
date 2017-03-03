@@ -93,7 +93,7 @@ class Board {
                     }
 
                     if (surroundingDragons >= 3) {
-                        System.out.println("Guard at (" + c + "," + r+ ") turned into a Dragon!");
+                        //System.out.println("Guard at (" + c + "," + r+ ") turned into a Dragon!");
                         //Piece dragon = new Piece(Type.DRAGON);
                         //cells[r][c] = dragon;
                         cells[r][c].changeType(Type.DRAGON);

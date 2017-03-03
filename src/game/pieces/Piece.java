@@ -27,7 +27,7 @@ public class Piece {
         this.type =type;
         pieceCount++;
         id = type.toString()+pieceCount;
-        System.out.println("Piece created with ID "+id);
+        //System.out.println("Piece created with ID "+id);
     }
 
     /**
