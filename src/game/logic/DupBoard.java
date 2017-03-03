@@ -13,7 +13,6 @@ import players.human.utilities.Constants;
 public class DupBoard extends Board {
 
     public DupBoard(Board original) {
-        super.gameOver = false;
         cloneCells(original);
     }
 

@@ -3,6 +3,7 @@ package players.human;
 import game.logic.DupBoard;
 import game.logic.Game;
 import game.logic.Updateable;
+import game.pieces.Piece;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,6 +12,7 @@ import javafx.scene.input.MouseEvent;
 import players.Player;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import static players.human.utilities.Constants.BOARD_PADDING;
@@ -51,6 +53,16 @@ public class HumanController implements Initializable, Player {
         gvm.updateBoard(board);
     }
 
+    @Override
+    public void informGameOver(boolean player1Wins, ArrayList<Piece> pieces) {
+        if(player1Wins) System.out.println("THE MAD KING WINS!");
+        else System.out.println("THE DRAGONS WIN!");
+
+        for(Piece p: pieces) {
+            System.out.println(p.id + "\tMoves: "+p.getMoveCount());//+"\tKills:"+p.getKills());
+        }
+    }
+
     public class MousePressed implements EventHandler<MouseEvent> {
 
         int row = -1;
@@ -60,7 +72,7 @@ public class HumanController implements Initializable, Player {
         public void handle(MouseEvent event) {
             row = (int) ((event.getY() - BOARD_PADDING) / CELL_WIDTH);
             column = (int) ((event.getX() - BOARD_PADDING) / CELL_WIDTH);
-            System.out.println("Press: ("+row+','+column+")");
+            //System.out.println("Press: ("+row+','+column+")");
 
             ViewModel.redraw(row,column);
         }
@@ -75,7 +87,7 @@ public class HumanController implements Initializable, Player {
         public void handle(MouseEvent event) {
             row = (int) ((event.getY() - BOARD_PADDING) / CELL_WIDTH);
             column = (int) ((event.getX() - BOARD_PADDING) / CELL_WIDTH);
-            System.out.println("Release: ("+row+','+column+")");
+            //System.out.println("Release: ("+row+','+column+")");
 
             if(mPressed.row != -1 && mPressed.column != -1) {
                 if(row>=0 && row<COLUMN_ROW_COUNT && column>=0 && column<COLUMN_ROW_COUNT) {

@@ -14,12 +14,12 @@ public class Piece {
     /**
      * The number of times this has moved.
      */
-    int movements;
+    int movements = 0;
 
     /**
      * The number of pieces this has captured.
      */
-    int captures;
+    int captures = 0;
 
     public String id;
 
@@ -37,6 +37,22 @@ public class Piece {
     public Piece(Piece piece) {
         type = piece.type;
         id = piece.type.toString()+piece.id;
+    }
+
+    public void moved() {
+        movements++;
+    }
+
+    public int getMoveCount() {
+        return movements;
+    }
+
+    public void gotKill() {
+        captures++;
+    }
+
+    public int getKills() {
+        return captures;
     }
 
     /**

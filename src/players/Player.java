@@ -1,7 +1,9 @@
 package players;
 
 import game.logic.DupBoard;
-import game.logic.Updateable;
+import game.pieces.Piece;
+
+import java.util.ArrayList;
 
 /**
  * Implemented by the HumanController and the BotController classes
@@ -20,4 +22,5 @@ public interface Player {
      */
     void update(DupBoard board);
 
+    void informGameOver(boolean player1Wins, ArrayList<Piece> pieces);
 }

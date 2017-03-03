@@ -1,6 +1,7 @@
 package players.bot;
 
 import game.history.Move;
+import game.pieces.Piece;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
@@ -10,6 +11,8 @@ import org.junit.Test;
 import players.Player;
 import game.logic.DupBoard;
 import game.logic.Updateable;
+
+import java.util.ArrayList;
 
 import static org.junit.Assert.assertTrue;
 
@@ -39,6 +42,9 @@ public class BotController implements Player {
 
     @Override
     public void update(DupBoard board) {}
+
+    @Override
+    public void informGameOver(boolean player1Wins, ArrayList<Piece> pieces) {}
 
     class SearchTask extends Task<Move> {
         DupBoard initialBoard;

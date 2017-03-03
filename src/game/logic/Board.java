@@ -3,6 +3,8 @@ package game.logic;
 import game.pieces.Piece;
 import game.pieces.Type;
 
+import java.util.ArrayList;
+
 import static players.human.utilities.Constants.COLUMN_ROW_COUNT;
 
 /**
@@ -25,25 +27,44 @@ class Board {
      */
     Piece[][] cells;
 
-    boolean gameOver;
+    private static ArrayList<Piece> pieceList;
+
+    private final Piece king = new Piece(Type.KING);
+    private final Piece guard1 = new Piece(Type.GUARD);
+    private final Piece guard2 = new Piece(Type.GUARD);
+    private final Piece guard3 = new Piece(Type.GUARD);
+    private final Piece dragon1 = new Piece(Type.DRAGON);
+    private final Piece dragon2 = new Piece(Type.DRAGON);
+    private final Piece dragon3 = new Piece(Type.DRAGON);
+    private final Piece dragon4 = new Piece(Type.DRAGON);
+    private final Piece dragon5 = new Piece(Type.DRAGON);
 
     Board(boolean tof) {
         cells = new Piece[5][5];
-        cells[0][2] = new Piece(Type.KING);
-        cells[1][1] = new Piece(Type.GUARD);
-        cells[1][2] = new Piece(Type.GUARD);
-        cells[1][3] = new Piece(Type.GUARD);
-        cells[3][0] = new Piece(Type.DRAGON);
-        cells[3][1] = new Piece(Type.DRAGON);
-        cells[3][2] = new Piece(Type.DRAGON);
-        cells[3][3] = new Piece(Type.DRAGON);
-        cells[3][4] = new Piece(Type.DRAGON);
-        gameOver = false;
+        cells[0][2] = king;
+        cells[1][1] = guard1;
+        cells[1][2] = guard2;
+        cells[1][3] = guard3;
+        cells[3][0] = dragon1;
+        cells[3][1] = dragon2;
+        cells[3][2] = dragon3;
+        cells[3][3] = dragon4;
+        cells[3][4] = dragon5;
+
+        pieceList = new ArrayList<>();
+        pieceList.add(cells[0][2]);
+        pieceList.add(cells[1][1]);
+        pieceList.add(cells[1][2]);
+        pieceList.add(cells[1][3]);
+        pieceList.add(cells[3][0]);
+        pieceList.add(cells[3][1]);
+        pieceList.add(cells[3][2]);
+        pieceList.add(cells[3][3]);
+        pieceList.add(cells[3][4]);
     }
 
     Board() {
         cells = new Piece[5][5];
-        gameOver = false;
     }
 
     /**
@@ -54,7 +75,13 @@ class Board {
         return cells;
     }
 
+    public ArrayList<Piece> getPieces() {
+        return pieceList;
+    }
+
     public void performMove(int row, int column, int newRow, int newColumn) {
+        cells[row][column].moved();
+        if(cells[newRow][newColumn] != null) cells[newRow][newColumn].gotKill();
         cells[newRow][newColumn] = cells[row][column];
         cells[row][column] = null;
         checkForConversions();
@@ -93,12 +120,8 @@ class Board {
                     }
 
                     if (surroundingDragons >= 3) {
-                        //System.out.println("Guard at (" + c + "," + r+ ") turned into a Dragon!");
-                        //Piece dragon = new Piece(Type.DRAGON);
-                        //cells[r][c] = dragon;
                         cells[r][c].changeType(Type.DRAGON);
                     }
-                    surroundingDragons = 0;
                 }
 
                 if(p.getType().equals(Type.KING)) {
@@ -150,16 +173,9 @@ class Board {
                     } else blockedDirections++;
 
                     if(blockedDirections == 4) {
-                        gameOver = true;
+                        //gameOver = true;
                     }
                 }
-            }
-        }
-
-        for(int c=0; c<COLUMN_ROW_COUNT; c++) {
-            Piece piece = cells[COLUMN_ROW_COUNT-1][c];
-            if(piece!=null && piece.getType().equals(Type.KING)) {
-                gameOver = true;
             }
         }
     }
