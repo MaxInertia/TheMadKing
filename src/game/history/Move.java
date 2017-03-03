@@ -1,9 +1,6 @@
 package game.history;
 
-import javafx.beans.NamedArg;
 import javafx.util.Pair;
-
-import java.util.ArrayList;
 
 /**
  *

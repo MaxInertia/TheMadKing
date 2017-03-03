@@ -1,18 +1,13 @@
 package game.pieces;
 
-import static game.pieces.Piece.Type.GUARD;
-import static game.pieces.Piece.Type.KING;
+import static game.pieces.Type.GUARD;
+import static game.pieces.Type.KING;
 
 /**
- * The abstract class which is extended by all game pieces. The pieces are classes so they can keep track of their own
- * statistics such as movements.
+ * This class is used in the game board to keep track of piece locations, as well as to store stats.
  */
 public class Piece {
     private static int pieceCount = 0;
-
-    public enum Type {
-        KING, GUARD, DRAGON;
-    };
 
     Type type;
 
@@ -26,12 +21,12 @@ public class Piece {
      */
     int captures;
 
-    public int id;
+    public String id;
 
     public Piece(Type type) {
         this.type =type;
         pieceCount++;
-        id = pieceCount;
+        id = type.toString()+pieceCount;
         System.out.println("Piece created with ID "+id);
     }
 
@@ -41,7 +36,7 @@ public class Piece {
      */
     public Piece(Piece piece) {
         type = piece.type;
-        id = piece.id;
+        id = piece.type.toString()+piece.id;
     }
 
     /**

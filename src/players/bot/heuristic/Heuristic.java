@@ -1,4 +1,4 @@
-package bot.heuristic;
+package players.bot.heuristic;
 
 import game.pieces.Piece;
 

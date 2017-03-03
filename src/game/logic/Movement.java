@@ -1,6 +1,7 @@
 package game.logic;
 
 import game.pieces.Piece;
+import game.pieces.Type;
 
 /**
  *
@@ -30,9 +31,9 @@ public class Movement {
         boolean[] movement = new boolean[4];
         for(int i=0; i<4; i++) movement[i] = false;
 
-        if(board[row][column].getType().equals(Piece.Type.DRAGON)) {
+        if(board[row][column].getType().equals(Type.DRAGON)) {
             movement[1] = true;
-        } else if(board[row][column].getType().equals(Piece.Type.GUARD)) {
+        } else if(board[row][column].getType().equals(Type.GUARD)) {
             movement[0] = true;
             movement[2] = true;
         } else {
@@ -102,31 +103,31 @@ public class Movement {
     public boolean capture_dragon_motion(int row, int  column, int newRow, int newColumn) {
         // Check if Dragon can be moved into
         if(board[newRow][newColumn] != null){
-            if(board[newRow][newColumn].getType()== Piece.Type.DRAGON) {
+            if(board[newRow][newColumn].getType()== Type.DRAGON) {
 
                 int numberSurrounding = 0;
 
                 if(newRow-1 >= 0) {
                     Piece piece =board[newRow-1][newColumn];
-                    if(piece!=null && (piece.getType()== Piece.Type.KING || piece.getType()== Piece.Type.GUARD) ) {
+                    if(piece!=null && (piece.getType()== Type.KING || piece.getType()== Type.GUARD) ) {
                         numberSurrounding++;
                     }
                 }
                 if(newRow+1 <= 4) {
                     Piece piece =board[newRow+1][newColumn];
-                    if(piece!=null && (piece.getType()== Piece.Type.KING || piece.getType()== Piece.Type.GUARD) ) {
+                    if(piece!=null && (piece.getType()== Type.KING || piece.getType()== Type.GUARD) ) {
                         numberSurrounding++;
                     }
                 }
                 if(newColumn-1 >= 0) {
                     Piece piece =board[newRow][newColumn-1];
-                    if(piece!=null && (piece.getType()== Piece.Type.KING || piece.getType()== Piece.Type.GUARD) ) {
+                    if(piece!=null && (piece.getType()== Type.KING || piece.getType()== Type.GUARD) ) {
                         numberSurrounding++;
                     }
                 }
                 if(newColumn+1 <= 4) {
                     Piece piece =board[newRow][newColumn+1];
-                    if(piece!=null && (piece.getType() == Piece.Type.KING || piece.getType()== Piece.Type.GUARD) ) {
+                    if(piece!=null && (piece.getType() == Type.KING || piece.getType()== Type.GUARD) ) {
                         numberSurrounding++;
                     }
                 }
@@ -153,14 +154,14 @@ public class Movement {
         if( (row == newRow) && (Math.abs(column-newColumn) == 2) ) {
             int intermediateCol = (column+newColumn)/2;
             Piece piece = board[newRow][intermediateCol];
-            if(piece != null && piece.getType()== Piece.Type.GUARD) {
+            if(piece != null && piece.getType()== Type.GUARD) {
                 return true;
             }
 
         } else if( (column == newColumn) && (Math.abs(row-newRow) == 2) ) {
             int intermediateRow = (row+newRow)/2;
             Piece piece = board[intermediateRow][newColumn];
-            if(piece != null && piece.getType()== Piece.Type.GUARD) {
+            if(piece != null && piece.getType()== Type.GUARD) {
                 return true;
             }
         }

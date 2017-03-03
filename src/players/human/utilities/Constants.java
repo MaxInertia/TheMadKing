@@ -1,4 +1,4 @@
-package views.game_view;
+package players.human.utilities;
 
 /**
  *

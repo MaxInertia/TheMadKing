@@ -1,15 +1,17 @@
-package views.game_view;
+package players.human;
 
 import game.logic.Game;
+import game.logic.Updateable;
 import game.pieces.Piece;
+import game.pieces.Type;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
-import static views.game_view.Constants.BOARD_PADDING;
-import static views.game_view.Constants.CELL_WIDTH;
-import static views.game_view.Constants.COLUMN_ROW_COUNT;
+import static players.human.utilities.Constants.BOARD_PADDING;
+import static players.human.utilities.Constants.CELL_WIDTH;
+import static players.human.utilities.Constants.COLUMN_ROW_COUNT;
 
 /**
  *
@@ -17,9 +19,9 @@ import static views.game_view.Constants.COLUMN_ROW_COUNT;
 public abstract class Graphics {
     GraphicsContext gc;
 
-    Image kingImage;
-    Image guardImage;
-    Image dragonImage;
+    private Image kingImage;
+    private Image guardImage;
+    private Image dragonImage;
 
     void highlightCell(int row, int column) {
         gc.setFill(Color.LIGHTGREEN);
@@ -59,21 +61,20 @@ public abstract class Graphics {
         }
     }
 
-    void drawPieces(Game game) {
-        Piece[][] cells = game.getBoard();
+    void drawPieces(Piece[][] cells) {
         for(int row=0; row<COLUMN_ROW_COUNT; row++) {
             for (int column = 0; column < COLUMN_ROW_COUNT; column++) {
                 if(cells[row][column]==null) continue;
                 String letter = "-";
                 Image image = null;
 
-                if (cells[row][column].getType().equals(Piece.Type.KING)) {
+                if (cells[row][column].getType().equals(Type.KING)) {
                     letter = "K";
                     image = kingImage;
-                } else if (cells[row][column].getType().equals(Piece.Type.GUARD)) {
+                } else if (cells[row][column].getType().equals(Type.GUARD)) {
                     letter = "G";
                     image = guardImage;
-                } else if (cells[row][column].getType().equals(Piece.Type.DRAGON)) {
+                } else if (cells[row][column].getType().equals(Type.DRAGON)) {
                     letter = "D";
                     image = dragonImage;
                 }
