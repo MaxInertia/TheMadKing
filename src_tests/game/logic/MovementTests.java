@@ -19,7 +19,7 @@ public class MovementTests {
 
     @Before
     public void before() {
-        board = new Board();
+        board = new Board(true);
         TestUtilities.printBoard(board.getCells());
     }
 

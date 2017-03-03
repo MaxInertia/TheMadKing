@@ -59,7 +59,17 @@ public class Game implements Updateable{
 
         if(board.cells[row][column]==null) return false;
 
-        boolean retVal = Movement.checkIfValid(board.getCells(), row, column, newRow, newColumn);
+        boolean retVal = false;
+        Type pieceType = board.cells[row][column].getType();
+        if(currentTurn==Team.MAN) {
+            if(pieceType == Type.GUARD || pieceType==Type.KING) {
+                retVal = Movement.checkIfValid(board.getCells(), row, column, newRow, newColumn);
+            }
+        } else {
+            if(pieceType == Type.DRAGON) {
+                retVal = Movement.checkIfValid(board.getCells(), row, column, newRow, newColumn);
+            }
+        }
         System.out.println("retval is "+retVal);
 
         if(retVal) {
@@ -88,12 +98,12 @@ public class Game implements Updateable{
         if(currentTurn==Team.MAN) {
             players[0].update(new DupBoard(board));
             currentTurn = Team.BEAST;
-            //assert players[1] != null;
-            players[1].notify( null ); //new DupBoard(board)
+            assert players[1] != null;
+            players[1].notify( new DupBoard(board) );
         } else {
             players[1].update(new DupBoard(board));
             currentTurn = Team.MAN;
-            //assert players[0] != null;
+            assert players[0] != null;
             players[0].notify( new DupBoard(board) );
         }
     }

@@ -38,7 +38,6 @@ class Board {
         cells[3][2] = new Piece(Type.DRAGON);
         cells[3][3] = new Piece(Type.DRAGON);
         cells[3][4] = new Piece(Type.DRAGON);
-
         gameOver = false;
     }
 
