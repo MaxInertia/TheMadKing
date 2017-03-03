@@ -31,7 +31,8 @@ public class BotController implements Player {
 
     public BotController(Updateable gameInstance) {
         updater = gameInstance;
-        searchMethod = SearchMethod.Factory.generateMiniMaxInstance(depthLimit, new NonSpecialHeuristic());
+        //searchMethod = SearchMethod.Factory.generateMiniMaxInstance(depthLimit, new NonSpecialHeuristic());
+        searchMethod = SearchMethod.Factory.generateAlphaBetaInstance(depthLimit, new NonSpecialHeuristic());
     }
 
     @Override

@@ -91,7 +91,10 @@ public class Game implements Updateable{
      * Switches the turn to the other team.
      */
     private void switchTurns() {
-        if(isGameOver()) players[0].informGameOver( player1Wins, board.getPieces() );
+        if(isGameOver()) {
+            players[0].informGameOver( player1Wins, board.getPieces() );
+            return;
+        }
 
         if(currentTurn==Team.MAN) {
             players[0].update(new DupBoard(board));

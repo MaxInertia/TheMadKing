@@ -18,6 +18,8 @@ public class MiniMax extends SearchMethod {
         this.depthLimit = depthLimit;
     }
 
+
+
     /**
      * MiniMax implementation.
      *
@@ -51,7 +53,7 @@ public class MiniMax extends SearchMethod {
                         depth+1,
                         false
                 );
-                if(abs(max(val, bestValue)-val) < 0.5) {
+                if(bestValue < val) {
                     bestMove = aMove;
                     bestValue = val;
                 }
@@ -67,7 +69,7 @@ public class MiniMax extends SearchMethod {
                         depth + 1,
                         false
                 );
-                if (abs(min(val, bestValue) - val) < 0.5) {
+                if (bestValue > val) {
                     bestMove = aMove;
                     bestValue = val;
                 }

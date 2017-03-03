@@ -20,6 +20,10 @@ public class AlphaBeta extends SearchMethod {
         this.depthLimit = depthLimit;
     }
 
+    float search(final DupBoard possibleBoard, int depth, boolean isMax) {
+        return alphaBeta(possibleBoard, depth, -1000, 1000, isMax);
+    }
+
     /**
      * MiniMax implementation.
      *
@@ -30,54 +34,57 @@ public class AlphaBeta extends SearchMethod {
      *
      * @param possibleBoard The board being evaluated.
      * @param depth The depth of the edge that the edge leads to.
+     * @param alpha
+     * @param beta
      * @param isMax True if MAX, false if MIN. When calling this method from chooseMove() use false.
      * @return The heuristic value of the board at the depth limit with the highest value.
      */
-    float search(final DupBoard possibleBoard, int depth, boolean isMax) {
-        depthPrint(depth, "Depth: "+depth+"\nCheckSum: "+bCS.getCheckSum(possibleBoard.getCells()));
+    float alphaBeta(final DupBoard possibleBoard, int depth, float alpha, float beta, boolean isMax) {
+        depthPrint(depth, "Depth: "+depth);
+        depthPrint(depth,"CheckSum: "+bCS.getCheckSum(possibleBoard.getCells()));
         if(depth == depthLimit) {
-            assert possibleBoard != null;
             return heuristic.valueOf(possibleBoard.getCells());
         }
 
-        Move bestMove = null;
-        float bestValue;
-
+        Move currentBestMove = null;
         if(isMax) {
-            bestValue = -1000f;
             ArrayList<Move> possibleMoves = generateMoves(possibleBoard,true);
             for(int i=0; i<possibleMoves.size(); i++) {
                 Move aMove = possibleMoves.get(i);
-                float val = search(
+                float score = alphaBeta(
                         possibleBoard.clonePlusMove(aMove),
                         depth+1,
-                        false
-                );
-                if(abs(max(val, bestValue)-val) < 0.5) {
-                    bestMove = aMove;
-                    bestValue = val;
+                        alpha,
+                        beta,
+                        false);
+                if(score >= beta) return beta; // Fail hard beta-cutoff
+                if(score > alpha) {
+                    currentBestMove = aMove;
+                    alpha = score; // Beta acts like max in MiniMax
                 }
             }
+            if(depth==0) chosenMove = currentBestMove;
+            return alpha;
 
         } else {
-            bestValue = 1000f;
-            ArrayList<Move> possibleMoves = generateMoves(possibleBoard, false);
-            for (int i = 0; i < possibleMoves.size(); i++) {
+            ArrayList<Move> possibleMoves = generateMoves(possibleBoard,false);
+            for(int i=0; i<possibleMoves.size(); i++) {
                 Move aMove = possibleMoves.get(i);
-                float val = search(
+                float score = alphaBeta(
                         possibleBoard.clonePlusMove(aMove),
-                        depth + 1,
-                        false
-                );
-                if (abs(min(val, bestValue) - val) < 0.5) {
-                    bestMove = aMove;
-                    bestValue = val;
+                        depth+1,
+                        alpha,
+                        beta,
+                        false);
+                if(score <= alpha) return alpha; // Fail hard beta-cutoff
+                if(score < beta) {
+                    currentBestMove = aMove;
+                    beta = score; // Beta acts like min in MiniMax
                 }
             }
+            if(depth==0) chosenMove = currentBestMove;
+            return beta;
         }
-
-        if(depth==0) chosenMove = bestMove;
-        return bestValue;
     }
 
 }
