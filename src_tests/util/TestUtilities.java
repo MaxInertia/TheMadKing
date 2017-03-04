@@ -1,7 +1,7 @@
 package util;
 
-import game.pieces.Piece;
-import game.pieces.Type;
+import madking.game.pieces.Piece;
+import madking.game.pieces.Type;
 
 /**
  * Contains methods that aid in testing classes within the program in various packages.
