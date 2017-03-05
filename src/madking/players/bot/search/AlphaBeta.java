@@ -15,14 +15,23 @@ import static java.lang.Math.min;
  */
 public class AlphaBeta extends SearchMethod {
 
+    int int_nodes;
+    int leaf_nodes;
+
     AlphaBeta(boolean isMax, int depthLimit, Heuristic heuristic) {
         this.heuristic = heuristic;
         this.depthLimit = depthLimit;
         this.isMax = isMax;
+        int_nodes = 0;
+        leaf_nodes = 0;
     }
 
     float search(final DupBoard possibleBoard, int depth, boolean isMax) {
-        return alphaBeta(possibleBoard, depth, -1000, 1000, isMax);
+        float bestVal = alphaBeta(possibleBoard, depth, -100000, 100000, isMax);
+        System.out.println("intermediate nodes: "+int_nodes);
+        System.out.println("leaf nodes: "+leaf_nodes);
+        System.out.println("Heuristic: "+bestVal);
+        return bestVal;
     }
 
     /**
@@ -44,8 +53,10 @@ public class AlphaBeta extends SearchMethod {
         depthPrint(depth, "Depth: "+depth);
         depthPrint(depth,"CheckSum: "+bCS.getCheckSum(possibleBoard.getCells()));
         if(depth == depthLimit) {
+            leaf_nodes++;
             return heuristic.valueOf(possibleBoard);
         }
+        int_nodes++;
 
         Move currentBestMove = null;
         if(isMax) {

@@ -1,5 +1,6 @@
 package madking.players.bot;
 
+import madking.Main;
 import madking.game.history.Move;
 import madking.game.pieces.Piece;
 import javafx.application.Platform;
@@ -25,7 +26,7 @@ public class BotPlayer implements Player {
 
     private SearchMethod searchMethod;
     private Updateable updater;
-    private int depthLimit = 3;
+    private int depthLimit = Main.searchDepthLimit;
     private int playerNumber;
 
     private BotPlayer(){}
@@ -33,7 +34,8 @@ public class BotPlayer implements Player {
     public BotPlayer(Updateable gameInstance, int playerNumber) {
         this.playerNumber = playerNumber;
         updater = gameInstance;
-        searchMethod = SearchMethod.Factory.generateInstance(playerNumber, SearchMethod.Type.AlphaBeta, depthLimit, new DiscreteHeuristic());
+        //searchMethod = SearchMethod.Factory.generateInstance(playerNumber, SearchMethod.Type.MiniMax, depthLimit, new DiscreteHeuristic());
+        searchMethod = SearchMethod.Factory.generateInstance(playerNumber, Main.searchMethod, depthLimit, new DiscreteHeuristic());
     }
 
     @Override

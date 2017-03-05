@@ -1,5 +1,6 @@
 package madking.gui;
 
+import madking.Main;
 import madking.game.GameInitializer;
 import madking.game.logic.DupBoard;
 import javafx.scene.canvas.Canvas;
@@ -20,13 +21,13 @@ public class ViewModel extends Graphics implements Display {
      ViewModel(Canvas canvas) {
         gc = canvas.getGraphicsContext2D();
         loadImages();
-        playerTurn = 1;
+        playerTurn = -1;
         instance = this;
 
         GameInitializer.Bundle startupBundle = GameInitializer.initialize(
                 (Display) this,
-                false,
-                true);
+                Main.player1isHuman,
+                Main.player2isHuman);
         player1 = startupBundle.getPlayer1();
         player2 = startupBundle.getPlayer2();
         //board = startupBundle.getInitialGameBoard();
@@ -48,10 +49,14 @@ public class ViewModel extends Graphics implements Display {
          return false;
     }
 
+    /**
+     *
+     * @param board
+     */
     public static void updateBoard(DupBoard board) {
          instance.board = board;
-         if(instance.playerTurn==1) instance.playerTurn = 2;
-         else instance.playerTurn = 1;
+         if(instance.playerTurn==2 || instance.playerTurn==-1) instance.playerTurn = 1;
+         else instance.playerTurn = 2;
          redraw();
     }
 

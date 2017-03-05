@@ -7,8 +7,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import madking.gui.HumanController;
+import madking.players.bot.search.SearchMethod;
 
 public class Main extends Application {
+
+    public static final boolean player1isHuman = true;
+    public static final boolean player2isHuman = false;
+
+    public static final SearchMethod.Type searchMethod = SearchMethod.Type.AlphaBeta;
+    public static int searchDepthLimit = 3;
 
     @Override
     public void start(Stage primaryStage) throws Exception{

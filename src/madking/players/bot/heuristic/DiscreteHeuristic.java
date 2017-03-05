@@ -9,8 +9,9 @@ import madking.game.Constants;
  */
 public class DiscreteHeuristic implements Heuristic {
 
-    private final int BASE_GUARD_VALUE = 1;
-    private final int BASE_DRAGON_VALUE = 1;
+    private final int BASE_KING_VALUE = 10;
+    private final int BASE_GUARD_VALUE = 10;
+    private final int BASE_DRAGON_VALUE = 100;
 
     @Override
     public float valueOf(DupBoard board) {
