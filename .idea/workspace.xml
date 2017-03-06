@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/ant.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/madking/players/bot/heuristic/TestHeuristic.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/madking/Main.java" afterPath="$PROJECT_DIR$/src/madking/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/madking/game/logic/Board.java" afterPath="$PROJECT_DIR$/src/madking/game/logic/Board.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/madking/game/logic/Game.java" afterPath="$PROJECT_DIR$/src/madking/game/logic/Game.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/madking/gui/ViewModel.java" afterPath="$PROJECT_DIR$/src/madking/gui/ViewModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/madking/players/bot/search/AlphaBeta.java" afterPath="$PROJECT_DIR$/src/madking/players/bot/search/AlphaBeta.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src_tests/madking/game/logic/GameTests.java" afterPath="$PROJECT_DIR$/src_tests/madking/game/logic/GameTests.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -127,7 +119,7 @@
       <file leaf-file-name="TestHeuristic.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/madking/players/bot/utility_functions/TestHeuristic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
+            <state relative-caret-position="0">
               <caret line="9" column="20" lean-forward="false" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -1268,7 +1260,7 @@
       <workItem from="1488741079747" duration="25543000" />
       <workItem from="1488826063116" duration="2074000" />
       <workItem from="1488828177252" duration="517000" />
-      <workItem from="1488831970549" duration="824000" />
+      <workItem from="1488831970549" duration="890000" />
     </task>
     <task id="LOCAL-00001" summary="Change class for ease of use">
       <created>1488346205397</created>
@@ -1396,7 +1388,14 @@
       <option name="project" value="LOCAL" />
       <updated>1488611299908</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Fix game rule: King loses when surrounded">
+      <created>1488836791097</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1488836791097</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1432,7 +1431,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="215613000" />
+    <option name="totallyTimeSpent" value="215679000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1564,7 +1563,8 @@
     <MESSAGE value="Add abstract class to be extended by each search method&#10;&#10;- Abstract class: SearchMethod&#10;- SearchMethod has inner-class 'Factory' for creating instances of the search method classes.&#10;- search methods: MiniMax and AlphaBeta&#10;- Minor code cleanup" />
     <MESSAGE value="Fix error in MiniMax &amp; Game, ~ Implement AlphaBeta" />
     <MESSAGE value="Minor architecture change to disconnect GUI from 'Player'" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor architecture change to disconnect GUI from 'Player'" />
+    <MESSAGE value="Fix game rule: King loses when surrounded" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix game rule: King loses when surrounded" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1741,6 +1741,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
           <caret line="14" column="44" lean-forward="true" selection-start-line="14" selection-start-column="44" selection-end-line="14" selection-end-column="44" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1873,7 +1874,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/madking/players/bot/utility_functions/TestHeuristic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
+        <state relative-caret-position="0">
           <caret line="9" column="20" lean-forward="false" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
