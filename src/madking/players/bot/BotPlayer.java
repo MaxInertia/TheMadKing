@@ -37,7 +37,7 @@ public class BotPlayer implements Player {
         updater = gameInstance;
         //searchMethod = SearchMethod.Factory.generateInstance(playerNumber, SearchMethod.Type.MiniMax, depthLimit, new DiscreteHeuristic());
         //searchMethod = SearchMethod.Factory.generateInstance(playerNumber, Main.searchMethod, depthLimit, new DiscreteHeuristic());
-        searchMethod = SearchMethod.Factory.generateInstance(playerNumber, Main.searchMethod, depthLimit, new TestHeuristic());
+        searchMethod = SearchMethod.Factory.generateInstance(playerNumber, Main.searchMethod, 2, new TestHeuristic());
     }
 
     @Override
