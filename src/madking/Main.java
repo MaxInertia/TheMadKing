@@ -14,7 +14,7 @@ public class Main extends Application {
     public static final boolean player1isHuman = false;
     public static final boolean player2isHuman = true;
 
-    public static final SearchMethod.Type searchMethod = SearchMethod.Type.MiniMax;
+    public static final SearchMethod.Type searchMethod = SearchMethod.Type.AlphaBeta;
     public static int searchDepthLimit = 6;
 
     @Override

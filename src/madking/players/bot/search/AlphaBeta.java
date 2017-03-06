@@ -92,9 +92,10 @@ public class AlphaBeta extends SearchMethod {
         //depthPrint(depth,"CheckSum: "+bCS.getCheckSum(possibleBoard.getCells()));
         if(depth == depthLimit) {
             leaf_nodes++;
-            float h = utilityFunction.valueOf(possibleBoard);
-            //System.out.println("Leaf node "+leaf_nodes+ " utility_functions = "+h);
-            return h;
+            return utilityFunction.valueOf(possibleBoard);
+        } else if(possibleBoard.isGameOver()) {
+            if(possibleBoard.player1Wins) return 10000;
+            else return -10000;
         }
         int_nodes++;
         //if(int_nodes%1000==0) System.out.println("Currently at "+int_nodes+" nodes.");

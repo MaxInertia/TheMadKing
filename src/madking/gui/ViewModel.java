@@ -21,7 +21,6 @@ public class ViewModel extends Graphics implements Display {
      ViewModel(Canvas canvas) {
         gc = canvas.getGraphicsContext2D();
         loadImages();
-        playerTurn = -1;
         instance = this;
 
         GameInitializer.Bundle startupBundle = GameInitializer.initialize(
@@ -30,7 +29,7 @@ public class ViewModel extends Graphics implements Display {
                 Main.player2isHuman);
         player1 = startupBundle.getPlayer1();
         player2 = startupBundle.getPlayer2();
-        playerTurn = 1;
+        playerTurn = 2;
         //if(player1!=null) playerTurn = 2;
         //board = startupBundle.getInitialGameBoard();
         //redraw();

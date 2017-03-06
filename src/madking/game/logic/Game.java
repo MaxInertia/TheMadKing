@@ -18,7 +18,7 @@ import static org.junit.Assert.assertFalse;
  */
 public class Game implements Updateable, Initializable{
 
-    private boolean player1Wins;
+    public boolean player1Wins;
     private Player[] players;
     private Team currentTurn;
     private Board board;
@@ -27,7 +27,7 @@ public class Game implements Updateable, Initializable{
     Display display;
 
     Game() {
-        currentTurn = Team.MAN;
+        currentTurn = Team.BEAST;
         board = new Board(true);
         history = new History();
         players = new Player[2];
@@ -38,7 +38,7 @@ public class Game implements Updateable, Initializable{
         this.players = players;
         this.display = display;
         display.updateDisplay(board.getDupe());
-        players[0].notify(board.getDupe());
+        players[1].notify(board.getDupe());
         //players[0].update(new DupBoard(board));
         //players[1].update(new DupBoard(board));
     }
@@ -83,7 +83,7 @@ public class Game implements Updateable, Initializable{
         assert display!=null;
         display.updateDisplay(board.getDupe());
 
-        if(isGameOver()) {
+        if(board.isGameOver()) {
             players[0].informGameOver( player1Wins, board.getPieces() );
             return;
         }
@@ -103,102 +103,16 @@ public class Game implements Updateable, Initializable{
         return board;
     }
 
-    public boolean isGameOver(){
-        //TODO: If there are less than 3 Dragons, check if they are cornered
-        return checkKingReachedEnd() || checkNoDragonsLeft() || checkIfKingSurrounded();
-    }
 
-    private boolean checkKingReachedEnd() {
-        for(int c=0; c<COLUMN_ROW_COUNT; c++) {
-            Piece piece = board.cells[COLUMN_ROW_COUNT-1][c];
-            if(piece!=null && piece.getType().equals(Type.KING)) {
-                System.out.println("King found at "+c);
-                player1Wins = true;
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private boolean checkNoDragonsLeft() {
-        for(int c=0; c<COLUMN_ROW_COUNT; c++) {
-            for(int r=0; r<COLUMN_ROW_COUNT; r++) {
-                Piece piece = board.cells[r][c];
-                if(piece!=null && !piece.isHuman()) return false;
-            }
-        }
-        System.out.println("No Dragons left!");
-        player1Wins = true;
-        return true;
-    }
-
-    private boolean checkIfKingSurrounded() {
-        for(int c=0; c<COLUMN_ROW_COUNT; c++) {
-            for(int r=0; r<COLUMN_ROW_COUNT; r++) {
-                Piece piece = board.cells[r][c];
-                if(piece!=null && piece.getType().equals(Type.KING)) {
-                    int surrounding = 0;
-                    int[] primary_cells = board.getAdjacentCells(r,c);
-
-                    for(int r2=0, c2=1; r2<8; r2+=2, c2+=2) {
-
-                        // Wall limiting king motion
-                        if( primary_cells[r2]==-1 ) {
-                            surrounding++;
-                            continue;
-                        }
-
-                        Piece piece2 = board.getCells()[ primary_cells[r2] ][ primary_cells[c2] ];
-
-                        // Blocked by Piece
-                        if( piece2!=null) {
-                            int[] secondary_cells = board.getAdjacentCells(primary_cells[r2], primary_cells[c2]);
-
-                            // Blocked by Dragon
-                            if (piece2.getType().equals(Type.DRAGON)) {
-
-                                // Check if Guard adjacent to that Dragon
-                                for (int r3 = 0, c3 = 1; r3 < 8; r3 += 2, c3 += 2) {
-                                    if (secondary_cells[r3] == -1) continue; // It is a wall, check next direction
-                                    Piece piece3 = board.getCells()[secondary_cells[r3]][secondary_cells[c3]];
-                                    if (piece3 != null && piece3.getType().equals(Type.GUARD)) return false; // King has a way out
-                                }
-                                surrounding++;
-                            } else if (piece2.getType().equals(Type.GUARD)) {
-
-                                // Check if Guard can be jumped
-                                int jumpR = r - 2*(r-primary_cells[r2]);
-                                int jumpC = c - 2*(c-primary_cells[c2]);
-                                if(jumpR>=0 && jumpC>=0 && jumpR<Constants.COLUMN_ROW_COUNT && jumpC<Constants.COLUMN_ROW_COUNT) {
-                                    if(board.getCells()[jumpR][jumpC] != null) surrounding++;
-                                    //else System.out.println("King can Jump guard at r"+jumpR+"c"+jumpC);
-                                } else {
-                                    surrounding++;
-                                }
-                            }
-                        }
-                    }
-
-                    if (surrounding==4) {
-                        System.out.println("King surrounded!");
-                        player1Wins = false;
-                        return true;
-                    }
-
-                } // eoIF - isKing?
-            } // eoF -r
-        } //eoF - c
-        return false;
-    }
 
     class TestHook {
         public void setBoard(Board newBoard) {
             board = newBoard;
         }
 
-        public boolean callCheckIfKingSurrounded() {
-            return checkIfKingSurrounded();
-        }
+        //public boolean callCheckIfKingSurrounded() {
+            //return board.checkIfKingSurrounded();
+        //}
     }
 
 }
