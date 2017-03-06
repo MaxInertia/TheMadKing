@@ -27,6 +27,8 @@ class Board {
      */
     Piece[][] cells;
 
+    public boolean player1Wins;
+
     private static ArrayList<Piece> pieceList;
 
     private final Piece king = new Piece(Type.KING);
@@ -209,5 +211,70 @@ class Board {
                 }*/
             }
         }
+    }
+
+    public boolean isGameOver(){
+        //TODO: If there are less than 3 Dragons, check if they are cornered
+        return checkKingReachedEnd() || checkNoDragonsLeft() || checkIfKingSurrounded();
+    }
+
+    private boolean checkKingReachedEnd() {
+        for(int c=0; c<COLUMN_ROW_COUNT; c++) {
+            Piece piece = cells[COLUMN_ROW_COUNT-1][c];
+            if(piece!=null && piece.getType().equals(Type.KING)) {
+                //System.out.println("King found at "+c);
+                player1Wins = true;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean checkNoDragonsLeft() {
+        for(int c=0; c<COLUMN_ROW_COUNT; c++) {
+            for(int r=0; r<COLUMN_ROW_COUNT; r++) {
+                Piece piece = cells[r][c];
+                if(piece!=null && !piece.isHuman()) return false;
+            }
+        }
+        //System.out.println("No Dragons left!");
+        player1Wins = true;
+        return true;
+    }
+
+    private boolean checkIfKingSurrounded() {
+        for(int c=0; c<COLUMN_ROW_COUNT; c++) {
+            for(int r=0; r<COLUMN_ROW_COUNT; r++) {
+                Piece piece = cells[r][c];
+                if(piece!=null && piece.getType().equals(Type.KING)) {
+                    int surrounding = 0;
+                    int[] primary_cells = getAdjacentCells(r,c);
+
+                    for(int r2=0, c2=1; r2<8; r2+=2, c2+=2) {
+
+                        // Wall limiting king motion
+                        if( primary_cells[r2]==-1 ) {
+                            surrounding++;
+                            continue;
+                        }
+
+                        Piece piece2 = cells[ primary_cells[r2] ][ primary_cells[c2] ];
+
+                        // Blocked by Piece
+                        if( piece2!=null) {
+                            surrounding++;
+                        }
+                    }
+
+                    if (surrounding==4) {
+                        //System.out.println("King surrounded!");
+                        player1Wins = false;
+                        return true;
+                    }
+
+                } // eoIF - isKing?
+            } // eoF -r
+        } //eoF - c
+        return false;
     }
 }
