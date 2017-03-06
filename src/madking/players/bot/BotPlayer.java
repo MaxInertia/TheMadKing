@@ -13,6 +13,7 @@ import madking.players.Player;
 import madking.game.logic.DupBoard;
 import madking.game.logic.Updateable;
 import madking.players.bot.heuristic.DiscreteHeuristic;
+import madking.players.bot.heuristic.TestHeuristic;
 import madking.players.bot.search.SearchMethod;
 
 import java.util.ArrayList;
@@ -35,7 +36,8 @@ public class BotPlayer implements Player {
         this.playerNumber = playerNumber;
         updater = gameInstance;
         //searchMethod = SearchMethod.Factory.generateInstance(playerNumber, SearchMethod.Type.MiniMax, depthLimit, new DiscreteHeuristic());
-        searchMethod = SearchMethod.Factory.generateInstance(playerNumber, Main.searchMethod, depthLimit, new DiscreteHeuristic());
+        //searchMethod = SearchMethod.Factory.generateInstance(playerNumber, Main.searchMethod, depthLimit, new DiscreteHeuristic());
+        searchMethod = SearchMethod.Factory.generateInstance(playerNumber, Main.searchMethod, depthLimit, new TestHeuristic());
     }
 
     @Override
