@@ -1,11 +1,11 @@
-package madking.players.bot.heuristic;
+package madking.players.bot.utility_functions;
 
 import madking.game.logic.DupBoard;
 
 /**
- * Any heuristic must implement this interface and implement the valueOf() method.
+ * Any utility_functions must implement this interface and implement the valueOf() method.
  */
-public interface Heuristic {
+public interface UtilityFunction {
 
     /**
      * Determine the value of the provided madking.game board.
@@ -14,7 +14,7 @@ public interface Heuristic {
      * post-Condition: none.
      *
      * @param board The madking.game board.
-     * @return The value of the madking.game board as evaluated by this heuristic.
+     * @return The value of the madking.game board as evaluated by this utility_functions.
      */
     public float valueOf(DupBoard board);
 

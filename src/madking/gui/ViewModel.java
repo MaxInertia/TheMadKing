@@ -30,17 +30,19 @@ public class ViewModel extends Graphics implements Display {
                 Main.player2isHuman);
         player1 = startupBundle.getPlayer1();
         player2 = startupBundle.getPlayer2();
+        playerTurn = 1;
+        //if(player1!=null) playerTurn = 2;
         //board = startupBundle.getInitialGameBoard();
         //redraw();
     }
 
     boolean inputMove(int r, int c, int rF, int cF) {
-         if(playerTurn == 1 && player1!=null) {
+         if(player1!=null && playerTurn == 1) {
              if(player1.move(r, c, rF, cF)) {
                  playerTurn = 2;
                  return true;
              }
-         } else if(playerTurn == 2 && player2!=null) {
+         } else if(player2!=null && playerTurn == 2) {
              if(player2.move(r, c, rF, cF)) {
                  playerTurn = 1;
                  return true;

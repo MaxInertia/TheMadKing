@@ -7,8 +7,10 @@ import madking.gui.Display;
 import madking.players.Player;
 import madking.game.history.Move;
 import madking.game.pieces.Piece;
+import org.junit.Test;
 
 import static madking.game.Constants.COLUMN_ROW_COUNT;
+import static org.junit.Assert.assertFalse;
 
 
 /**
@@ -48,12 +50,12 @@ public class Game implements Updateable, Initializable{
         int newRow = move.getFinalCell().getRow();
         int newColumn = move.getFinalCell().getColumn();
 
-        if(board.cells[row][column]==null) return false;
+        if(board.cells[row][column] == null) return false;
 
         boolean retVal = false;
         Type pieceType = board.cells[row][column].getType();
-        if(currentTurn==Team.MAN) {
-            if(pieceType == Type.GUARD || pieceType==Type.KING) {
+        if(currentTurn == Team.MAN) {
+            if(pieceType == Type.GUARD || pieceType == Type.KING) {
                 retVal = Movement.checkIfValid(board.getCells(), row, column, newRow, newColumn);
             }
         } else {
@@ -61,7 +63,6 @@ public class Game implements Updateable, Initializable{
                 retVal = Movement.checkIfValid(board.getCells(), row, column, newRow, newColumn);
             }
         }
-        System.out.println("retval is "+retVal);
 
         if(retVal) {
             board.performMove(row, column, newRow, newColumn);
@@ -102,7 +103,7 @@ public class Game implements Updateable, Initializable{
         return board;
     }
 
-    private boolean isGameOver(){
+    public boolean isGameOver(){
         //TODO: If there are less than 3 Dragons, check if they are cornered
         return checkKingReachedEnd() || checkNoDragonsLeft() || checkIfKingSurrounded();
     }
@@ -164,19 +165,18 @@ public class Game implements Updateable, Initializable{
                                 }
                                 surrounding++;
                             } else if (piece2.getType().equals(Type.GUARD)) {
-                                int jumpR = 0;
-                                int jumpC = 0;
-                                if( (r-r2) != 0 ) jumpR = r - 2*(r-r2);
-                                if( (c-c2) != 0 ) jumpC = c - 2*(c-c2);
-                                if(jumpR>=0 && jumpC>=0 && jumpR< Constants.COLUMN_ROW_COUNT && jumpC<Constants.COLUMN_ROW_COUNT) {
-                                    Piece piece3 = board.getCells()[jumpR][jumpC];
-                                    if(piece3!=null) surrounding++;
+
+                                // Check if Guard can be jumped
+                                int jumpR = r - 2*(r-primary_cells[r2]);
+                                int jumpC = c - 2*(c-primary_cells[c2]);
+                                if(jumpR>=0 && jumpC>=0 && jumpR<Constants.COLUMN_ROW_COUNT && jumpC<Constants.COLUMN_ROW_COUNT) {
+                                    if(board.getCells()[jumpR][jumpC] != null) surrounding++;
+                                    //else System.out.println("King can Jump guard at r"+jumpR+"c"+jumpC);
                                 } else {
                                     surrounding++;
                                 }
                             }
                         }
-
                     }
 
                     if (surrounding==4) {
@@ -189,6 +189,16 @@ public class Game implements Updateable, Initializable{
             } // eoF -r
         } //eoF - c
         return false;
+    }
+
+    class TestHook {
+        public void setBoard(Board newBoard) {
+            board = newBoard;
+        }
+
+        public boolean callCheckIfKingSurrounded() {
+            return checkIfKingSurrounded();
+        }
     }
 
 }

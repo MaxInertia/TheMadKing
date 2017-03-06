@@ -8,11 +8,11 @@ import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.embed.swing.JFXPanel;
 import javafx.event.EventHandler;
+import madking.players.bot.utility_functions.PrimarySecondary;
 import org.junit.Test;
 import madking.players.Player;
 import madking.game.logic.DupBoard;
 import madking.game.logic.Updateable;
-import madking.players.bot.heuristic.DiscreteHeuristic;
 import madking.players.bot.search.SearchMethod;
 
 import java.util.ArrayList;
@@ -33,9 +33,18 @@ public class BotPlayer implements Player {
 
     public BotPlayer(Updateable gameInstance, int playerNumber) {
         this.playerNumber = playerNumber;
+
+        if(playerNumber==1) {
+            //depthLimit = 5;
+            searchMethod = SearchMethod.Factory.generateInstance(1, Main.searchMethod, depthLimit, new PrimarySecondary());
+        }
+
+        if(playerNumber==2) {
+            //depthLimit = 5;
+            searchMethod = SearchMethod.Factory.generateInstance(2, Main.searchMethod, depthLimit, new PrimarySecondary());
+        }
+
         updater = gameInstance;
-        //searchMethod = SearchMethod.Factory.generateInstance(playerNumber, SearchMethod.Type.MiniMax, depthLimit, new DiscreteHeuristic());
-        searchMethod = SearchMethod.Factory.generateInstance(playerNumber, Main.searchMethod, depthLimit, new DiscreteHeuristic());
     }
 
     @Override
@@ -66,6 +75,12 @@ public class BotPlayer implements Player {
             super.succeeded();
             System.out.println("setOnSucceeded running on Thread: "+Thread.currentThread());
             updater.submitMove(getValue()); // Ends the Bots turn
+        }
+
+        @Override
+        protected void failed() {
+            super.failed();
+            System.out.println("SEARCH FAILED");
         }
     }
 

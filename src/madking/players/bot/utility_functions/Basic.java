@@ -1,4 +1,4 @@
-package madking.players.bot.heuristic;
+package madking.players.bot.utility_functions;
 
 import madking.game.logic.DupBoard;
 import madking.game.pieces.Type;
@@ -7,7 +7,7 @@ import madking.game.Constants;
 /**
  * Created by MaxInertia on 2017-03-03.
  */
-public class DiscreteHeuristic implements Heuristic {
+public class Basic implements UtilityFunction {
 
     private final int BASE_KING_VALUE = 10;
     private final int BASE_GUARD_VALUE = 10;

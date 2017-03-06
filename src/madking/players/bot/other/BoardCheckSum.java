@@ -1,4 +1,4 @@
-package madking.players.bot._util;
+package madking.players.bot.other;
 
 import madking.game.history.Move;
 import madking.game.pieces.Piece;

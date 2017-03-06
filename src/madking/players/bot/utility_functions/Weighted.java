@@ -1,4 +1,4 @@
-package madking.players.bot.heuristic;
+package madking.players.bot.utility_functions;
 
 import madking.game.logic.DupBoard;
 import madking.game.pieces.Type;
@@ -6,7 +6,7 @@ import madking.game.pieces.Type;
 /**
  *
  */
-public class NonSpecialHeuristic implements Heuristic {
+public class Weighted implements UtilityFunction {
     @Override
     public float valueOf(DupBoard board) {
         float value = 0;

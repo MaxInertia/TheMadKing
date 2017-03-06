@@ -26,6 +26,8 @@ public class MovementTests {
     @Test
     public void kingJump() {
         assertTrue(Movement.checkIfValid(board.getCells(),0,2,2,2));
+        board.performMove(0,2,2,2);
+        TestUtilities.printBoard(board.getCells());
     }
 
     @Test

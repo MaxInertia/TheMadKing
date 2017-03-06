@@ -3,7 +3,7 @@ package madking.players.bot;
 import madking.game.logic.DupBoard;
 import org.junit.Before;
 import org.junit.Test;
-import madking.players.bot.heuristic.DiscreteHeuristic;
+import madking.players.bot.utility_functions.Basic;
 import madking.players.bot.search.SearchMethod;
 
 /**
@@ -24,7 +24,7 @@ public class SearchTest {
                 2,
                 SearchMethod.Type.AlphaBeta,
                 depthLimit,
-                new DiscreteHeuristic()
+                new Basic()
         );
         board = DupBoard.generateEmptyInstance();
     }

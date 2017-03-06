@@ -68,8 +68,17 @@ public class DupBoard extends Board {
                     if ((board.getCells()[r][c] != null) && (board.getCells()[r][c].isHuman())) {
                         int[] adjCells = getAdjacentCells(r,c);
                         for(int r2=0, c2=1; r2<8; r2+=2, c2+=2) {
+
                             if( adjCells[r2] != -1 && Movement.checkIfValid(board.getCells(), r, c, adjCells[r2], adjCells[c2]) ) {
                                 moves.add(new Move(r, c, adjCells[r2], adjCells[c2]));
+                            }
+
+                            if(board.getCells()[r][c].getType().equals(Type.KING)) {
+                                int jumpR = r - 2*(r-adjCells[r2]);
+                                int jumpC = c - 2*(c-adjCells[c2]);
+                                if(jumpR>=0 && jumpC>=0 && jumpR<Constants.COLUMN_ROW_COUNT && jumpC<Constants.COLUMN_ROW_COUNT) {
+                                    if(Movement.checkIfValid(board.getCells(), r, c, jumpR, jumpC)) moves.add(new Move(r, c, jumpR, jumpC));
+                                }
                             }
                         }
                         if(++humanCount == Constants.INITIAL_GUARD_COUNT+1) return moves;
@@ -85,10 +94,9 @@ public class DupBoard extends Board {
                 for (int c = 0; c < Constants.COLUMN_ROW_COUNT; c++) { // -- Always 25 iterations
                     if ((board.getCells()[r][c] != null) && (!board.getCells()[r][c].isHuman())) {
                         int[] adjCells = getAdjacentCells(r,c);
-                        int[] diagCells = getAdjacentCells(r,c);
+                        int[] diagCells = getDiagonalCells(r,c);
 
                         for(int r2=0, c2=1; r2<8; r2+=2, c2+=2) {
-                            if(adjCells[r2] == -1) continue;
                             if( adjCells[r2] != -1 && Movement.checkIfValid(board.getCells(), r, c, adjCells[r2], adjCells[c2]) ) {
                                 moves.add(new Move(r, c, adjCells[r2], adjCells[c2]));
                             }

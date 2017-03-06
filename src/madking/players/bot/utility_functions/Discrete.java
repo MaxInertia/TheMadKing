@@ -1,16 +1,16 @@
-package madking.players.bot.heuristic;
+package madking.players.bot.utility_functions;
 
 import madking.game.logic.DupBoard;
 import madking.game.pieces.Type;
 
 /**
- * Heuristic that uses the following value function assuming MAX controls Dragons:
+ * UtilityFunction that uses the following value function assuming MAX controls Dragons:
  * value = (5 * DragonCount) - (3 * GuardCount) + (Number of Dragons attacking King) - (King Row Number)
  *
  * If MAX controls Humans:
  * value = -value;
  */
-public class BasicHeuristic implements Heuristic {
+public class Discrete implements UtilityFunction {
     @Override
     public float valueOf(DupBoard board) {
         if(board==null) return 0;

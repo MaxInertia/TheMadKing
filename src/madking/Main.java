@@ -11,11 +11,11 @@ import madking.players.bot.search.SearchMethod;
 
 public class Main extends Application {
 
-    public static final boolean player1isHuman = true;
-    public static final boolean player2isHuman = false;
+    public static final boolean player1isHuman = false;
+    public static final boolean player2isHuman = true;
 
-    public static final SearchMethod.Type searchMethod = SearchMethod.Type.AlphaBeta;
-    public static int searchDepthLimit = 3;
+    public static final SearchMethod.Type searchMethod = SearchMethod.Type.MiniMax;
+    public static int searchDepthLimit = 6;
 
     @Override
     public void start(Stage primaryStage) throws Exception{

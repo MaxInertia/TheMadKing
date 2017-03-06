@@ -91,7 +91,7 @@ class Board {
         checkForConversions();
     }
 
-    int[] getAdjacentCells(int r, int c) {
+    public int[] getAdjacentCells(int r, int c) {
         int[] cells = new int[8];
         if(c+1<5) { cells[0] = r; cells[1] = c+1; }
         else cells[0] = -1;
@@ -154,6 +154,7 @@ class Board {
                     }
                 }
 
+                /*
                 if(p.getType().equals(Type.KING)) {
                     int blockedDirections = 0;
                     Piece piece;
@@ -205,7 +206,7 @@ class Board {
                     if(blockedDirections == 4) {
                         //gameOver = true;
                     }
-                }
+                }*/
             }
         }
     }
